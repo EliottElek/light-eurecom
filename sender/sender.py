@@ -2,7 +2,7 @@ import json
 import socket
 import time
 
-from core import create_packet
+from sender.utils import create_packet
 
 MULTICAST_GROUP = '224.0.0.1'
 MULTICAST_PORT = 5007
