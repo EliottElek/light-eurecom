@@ -1,4 +1,4 @@
-# multicast with Python
+# Multicast with Python
 
 Here is a simple multicast implementation with python. 
 You can test it two ways, with or without docker.
