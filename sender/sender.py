@@ -2,10 +2,14 @@ import json
 import socket
 import time
 
+from core import create_packet
+
 MULTICAST_GROUP = '224.0.0.1'
 MULTICAST_PORT = 5007
 
-MESSAGE = "Hello World !"
+
+MESSAGE = create_packet()
+
 
 if __name__ == '__main__':
     print("Starting multicast sender...")

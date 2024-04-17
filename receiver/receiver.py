@@ -1,5 +1,7 @@
 import socket
 
+from core import get_destined_packet
+
 MULTICAST_GROUP = '224.0.0.1'
 MULTICAST_PORT = 5007
 
@@ -14,7 +16,8 @@ if __name__ == '__main__':
     while True:
         try:
             data, address = multicast_socket.recvfrom(1024)
-            print(f"Received for receiver 1:", data.decode())
+            result = get_destined_packet(data)
+            print(f"Received for receiver 1:", result.decode())
         except Exception as e:
             print("[Error] " + str(e))
             break
