@@ -1,6 +1,33 @@
 # multicast with Python
 
-## Start the multicast server
+Here is a simple multicast implementation with python. 
+You can test it two ways, with or without docker.
+
+## Without docker
+
+This impies you have `python3` installed on your machine.
+
+Start by opening 3 terminals.
+
+1. Terminal 1 (server)
+```
+cd sender && python3 sender.py
+```
+1. Terminal 2 (receiver 1)
+```
+cd receiver && python3 receiver.py
+```
+1. Terminal 3 (receiver 2)
+```
+cd receiver && python3 receiver.py
+```
+
+## With docker 
+
+This implies that you have `docker` installed on your machine. 
+
+
+### Start the multicast server
 
 Start by building the image of the server.
 ```
@@ -13,7 +40,7 @@ then start the container:
 docker run --name my-multicast-sender multicast-sender
 ```
 
-## Start the receivers
+### Start the receivers
 
 We'll use two receivers for the moment.
 Start by building the image of the receiver.
@@ -38,7 +65,7 @@ c3730874a1cd   multicast-receiver   "python3 receiver.py"   About a minute ago  
 3788216bfb98   multicast-receiver   "python3 receiver.py"   About a minute ago   Up About a minute             my-multicast-receiver-1
 1268c4dd699c   multicast-sender     "python3 sender.py"     About a minute ago   Up About a minute             my-multicast-sender
 ```
-## Start the multicast
+### Start the multicast
 
 Open three terminal, and access the containers via ssh. Run:
 
