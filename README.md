@@ -71,3 +71,5 @@ python3 receiver.py
 
 You should get something like:
 
+![image](https://github.com/EliottElek/multicast/assets/64375473/c9559051-8c97-435b-85b4-3705caf81a44)
+
