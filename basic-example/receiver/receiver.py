@@ -1,6 +1,6 @@
 import socket
 
-from core import get_destined_packet
+from utils import get_destined_packet
 
 MULTICAST_GROUP = '224.0.0.1'
 MULTICAST_PORT = 5007
