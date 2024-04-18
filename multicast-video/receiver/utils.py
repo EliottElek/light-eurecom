@@ -1,3 +1,5 @@
+from faker import Faker
+
 
 def get_destined_packet(main_packet):
     """
@@ -49,3 +51,9 @@ class Cache:
             for k, v in cache.items():
                 file.write(f"{k}:{v}\n")
 
+
+
+
+def get_rand_name():
+    fake = Faker()
+    return fake.first_name()

@@ -17,7 +17,7 @@ if __name__ == '__main__':
         try:
             data, address = multicast_socket.recvfrom(1024)
             result = get_destined_packet(data)
-            print(f"Received for receiver 1:", result.decode())
+            print(f"Received:", result.decode())
         except Exception as e:
             print("[Error] " + str(e))
             break

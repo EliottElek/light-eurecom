@@ -1,9 +1,10 @@
 import socket
-
-from utils import get_destined_packet
+from utils import get_rand_name
 
 MULTICAST_GROUP = '224.0.0.1'
 MULTICAST_PORT = 5007
+RECEIVER_NAME = get_rand_name()
+BUFFER_SIZE = 1024 * 1024  # 1 MB buffer size
 
 if __name__ == '__main__':
     print("Starting multicast receiver...")
@@ -13,13 +14,27 @@ if __name__ == '__main__':
     multicast_socket.bind(('', MULTICAST_PORT))
     multicast_socket.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, socket.inet_aton(MULTICAST_GROUP) + socket.inet_aton('0.0.0.0'))
 
-    while True:
-        try:
-            data, address = multicast_socket.recvfrom(1024)
-            result = get_destined_packet(data)
-            print(f"Received for receiver 1:", result.decode())
-        except Exception as e:
-            print("[Error] " + str(e))
-            break
+    video_chunks = []
 
-    multicast_socket.close()
+    try:
+        while True:
+            data, address = multicast_socket.recvfrom(BUFFER_SIZE)
+            print(f"Received for receiver {RECEIVER_NAME}: {len(data)} bytes")
+            if data == b'LAST_PACKET':
+                break
+            video_chunks.append(data)
+
+    except Exception as e:
+        print("[Error] " + str(e))
+
+    finally:
+        multicast_socket.close()
+
+    # Rebuild the video from chunks
+    video_data = b''.join(video_chunks)
+
+    # Write the rebuilt video to a file
+    with open("video_rebuilt.mp4", "wb") as video_file:
+        video_file.write(video_data)
+
+    print("Video successfully rebuilt and saved as video_rebuilt.mp4")
