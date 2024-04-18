@@ -7,7 +7,7 @@ RECEIVER_NAME = get_rand_name()
 BUFFER_SIZE = 1024 * 1024  # 1 MB buffer size
 
 if __name__ == '__main__':
-    print("Starting multicast receiver...")
+    print(f"{RECEIVER_NAME} is waiting for message...")
     multicast_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
     multicast_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)  # Use SO_REUSEPORT
     multicast_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
