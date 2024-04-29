@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Define animation keyframes */
+@keyframes movePacket {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+
+    /* Adjust distance as needed */
+}
+
+/* Apply animation to the packet when triggered */
+.animate-packet {
+    animation: movePacket 1s ease-in-out;
+    /* Adjust duration as needed */
+}

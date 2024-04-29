@@ -49,8 +49,5 @@ if __name__ == '__main__':
     except OSError as e:
         print("[Error] OS Error:", str(e))
 
-    except socket.error as e:
-        print("[Error] Socket Error:", str(e))
-
     finally:
         multicast_socket.close()
