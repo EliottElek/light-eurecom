@@ -1,16 +1,23 @@
-import { type Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
+import { type Metadata } from 'next'
 import { Toaster } from 'react-hot-toast'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Their Side',
-    default:
-      'Their Side - Conversations with the most tragically misunderstood people of our time',
+    template: '%s - Maven',
+    default: 'Maven - Custom content delivery over multicast',
   },
   description:
-    'Conversations with the most tragically misunderstood people of our time.',
+    'Custom content delivery over multicast',
 }
 
 export default function RootLayout({
@@ -19,21 +26,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-white antialiased overflow-hidden">
-      <head>
-        <link
-          rel="preconnect"
-          href="https://cdn.fontshare.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap"
-        />
-      </head>
-      <body>
-        <div>{children}</div>
-        <div><Toaster position='top-right' /></div>
+    <html lang="en" className={clsx('bg-gray-50 antialiased', inter.variable)}>
+      <body>{children}
+        <Toaster />
       </body>
     </html>
   )

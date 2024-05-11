@@ -1,5 +1,3 @@
-import { parse as parseFeed } from 'rss-to-json'
-import { array, number, object, parse, string } from 'valibot'
 import axios from 'axios'
 
 
@@ -7,7 +5,8 @@ export interface Demo {
   id: number
   name: string
   description: string,
-  action: string
+  action: string,
+  image: string
 }
 
 export async function getAllDemos(): Promise<Demo[] | null> {
