@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
-export default function ErrorDialog({ error, details }: { error: string, details: string }) {
+export default function ErrorDialog({ error, details, closable = false }: { error: string, details: string, closable?: boolean }) {
 
     const [open, setOpen] = useState(false)
 
@@ -13,7 +13,7 @@ export default function ErrorDialog({ error, details }: { error: string, details
     }, [])
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog className="relative z-10" onClose={() => { }}>
+            <Dialog className="relative z-10" onClose={closable ? () => setOpen(false) : () => { }}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"

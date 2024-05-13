@@ -1,13 +1,13 @@
 "use client"
 import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import ServerIcon from '../ServerIcon';
-import ClientIcon from '../ClientIcon';
-import RouterIcon from '../RouterIcon';
-import CacheIcon from '../CacheIcon';
-import VideoPlayer from '../VideoPlayer';
-import ProgessBar from './ProgessBar';
-import { PhoneFrame } from '../landing/PhoneFrame';
+import ServerIcon from '../../ServerIcon';
+import ClientIcon from '../../ClientIcon';
+import RouterIcon from '../../RouterIcon';
+import CacheIcon from '../../CacheIcon';
+import VideoPlayer from '../../VideoPlayer';
+import ProgessBar from '../ProgessBar';
+import DbIcon from '@/components/DbIcon';
 function CustomIcon({ type }: { type: string }) {
     let icon = null;
 
@@ -57,15 +57,22 @@ function CustomNode({ data }: { data: any }) {
                     </div>
                     <ul>{data.cache.map((cache: string, i: number) => <li key={i}>"{cache}"</li>)}</ul>
                 </div>}
+            {
+                data.storage &&
+                <div className='absolute z-0 top-1 -left-1 -translate-y-full -translate-x-full p-1 px-3 shadow rounded-md border border-gray-400 bg-white'>
+                    <div className='absolute -right-5 -bottom-5 bg-white p-1 rounded-full border'>
+                        <DbIcon size="25px" />
+                    </div>
+                    <ul className='divide-y'>{data.storage.map((storage: string, i: number) => <li className="truncate text-xs" key={i}>"{storage}"</li>)}</ul>
+                </div>
+            }
             {data.video &&
                 <div className='absolute top-4 right-4 -translate-y-full translate-x-full overflow-hidden shadow rounded-md border border-gray-400 bg-white'>
-                    <PhoneFrame priority>
-                        <VideoPlayer status={data.video.status} url={data.video.url} />
-                    </PhoneFrame>
+
                 </div>}
-            {true && <div className='absolute top-0 -translate-y-full left-0'>
-                <ProgessBar progress={70} />
-            </div>}
+            <div className='absolute top-0 -translate-y-full left-0'>
+                <ProgessBar progress={data.overload || 0} />
+            </div>
         </div>
     );
 }

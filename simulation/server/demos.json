@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Basic XOR - 2 receivers",
+        "name": "Basic example",
         "description": "In this example, we're performing a basic multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets.",
         "action": "http://localhost:5000/basic-xor-2-receivers",
         "image":"http://localhost:5000/images/1.png",

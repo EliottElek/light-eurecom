@@ -1,5 +1,5 @@
 {
-    "id": "6b218af4-0eb3-11ef-adcf-ca504cda8544",
+    "id": "f534ccfe-10fe-11ef-acb3-ca504cda8544",
     "name": "Video XOR - 2 receivers",
     "step": 2,
     "description": "In this example, we're performing a video multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets, but decode the video they asked for.",

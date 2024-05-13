@@ -1,8 +1,8 @@
 {
-    "id": "c6a2c49e-0ecf-11ef-adcf-ca504cda8544",
-    "name": "Video XOR - 2 receivers",
-    "step": 2,
-    "description": "In this example, we're performing a video multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets, but decode the video they asked for.",
+    "id": "cf5963b6-104d-11ef-acb3-ca504cda8544",
+    "name": "Basic XOR - 3 receivers",
+    "step": 38,
+    "description": "In this example, we're performing a basic multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets.",
     "edges": [
         {
             "id": "e1-2",
@@ -30,6 +30,15 @@
             "style": {
                 "strokeWidth": 3
             }
+        },
+        {
+            "id": "e2-5",
+            "source": "2",
+            "target": "5",
+            "animated": false,
+            "style": {
+                "strokeWidth": 3
+            }
         }
     ],
     "nodes": [
@@ -40,7 +49,7 @@
                 "name": "Main server",
                 "ip": "127.0.0.1",
                 "icon": "server",
-                "message": "Prepares the packet."
+                "message": "Socket closed."
             },
             "position": {
                 "x": -400,
@@ -68,10 +77,8 @@
                 "name": "Receiver 1",
                 "ip": "127.0.0.2",
                 "icon": "client",
-                "video": {
-                    "status": "loading",
-                    "url": "http://localhost:5000/videos/receiver1.mp4"
-                }
+                "message": "Decoded message: why_so_serio",
+                "active": false
             },
             "position": {
                 "x": 330,
@@ -85,14 +92,27 @@
                 "name": "Receiver 2",
                 "ip": "127.0.0.3",
                 "icon": "client",
-                "video": {
-                    "status": "loading",
-                    "url": "http://localhost:5000/videos/receiver2.mp4"
-                }
+                "message": "Decoded message: not_so_perfe",
+                "active": false
             },
             "position": {
                 "x": 330,
                 "y": 150
+            }
+        },
+        {
+            "id": "5",
+            "type": "custom",
+            "data": {
+                "name": "Receiver 3",
+                "ip": "127.0.0.4",
+                "icon": "client",
+                "message": "Decoded message: tom_is_minim",
+                "active": false
+            },
+            "position": {
+                "x": 330,
+                "y": 360
             }
         }
     ]

@@ -14,7 +14,6 @@ export async function getAllSimulations(): Promise<Simulation[] | null> {
     const { data: simulations } = await axios.get("http://localhost:5000/simulations")
     return simulations
   } catch (e) {
-    console.log(e)
     return null
   }
 }

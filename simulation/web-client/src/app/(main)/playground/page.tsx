@@ -1,15 +1,18 @@
-import ErrorDialog from '@/components/ErrorDialog'
-import { getAllDemos } from '@/lib/demos'
+import { getLocalDemos } from '@/lib/demos'
 import React from 'react'
-import HomeActionPanel from '@/components/HomeActionPanel'
+import LocalHomeActionPanel from '@/components/LocalHomeActionPanel'
 
 const page = async () => {
-  const demos = await getAllDemos()
-  if (!demos) return <main className="flex h-full grow oveflow-hidden">
-    <ErrorDialog error={"Could not reach the server."} details={'An error occured trying to reach the server. Come back later or contact support.'} />
-  </main>
+  const demos = await getLocalDemos()
   return (
-    <HomeActionPanel demos={demos} />
+    <div className='lg:p-12 p-4'>
+      <div className='prose'>
+        <h1 className='my-0'>Playground</h1>
+        <p className='mb-4 text-gray-600'>Play simulations to understand how the principle works.</p>
+      </div>
+      {/* <HomeActionPanel demos={demos} /> */}
+      <LocalHomeActionPanel demos={demos} />
+    </div>
   )
 }
 

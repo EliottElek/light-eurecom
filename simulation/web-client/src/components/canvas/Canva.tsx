@@ -5,6 +5,7 @@ import CustomNode from './CustomNode';
 import 'reactflow/dist/style.css';
 import Link from 'next/link';
 import CacheIcon from '../CacheIcon';
+import ProgressBar from './ProgessBar';
 
 const nodeTypes = {
   custom: CustomNode,
@@ -51,14 +52,18 @@ const Canva = ({ data }: { data: any }) => {
           </div>
         </Panel>
         <Panel position="bottom-right">
-          <div className='p-4 max-w-xl bg-white shadow rounded-md'>
-            <h2 className='mb-3 italic underline text-sm'>
-              Legends:
-            </h2>
-            <div className='flex items-center text-sm gap-1'>
-              <CacheIcon size="20px" />
-              <p>Local cache</p>
-            </div>
+            <div className='p-4 max-w-xl flex flex-col gap-2 bg-white shadow rounded-md'>
+              <h2 className='mb-3 italic underline text-sm'>
+                Legends:
+              </h2>
+              <div className='flex items-center justify-between text-sm gap-1'>
+                <CacheIcon size="20px" />
+                <p>Local cache</p>
+              </div>
+              <div className='flex items-center justify-between text-sm gap-1'>
+                <ProgressBar progress={70} />
+                <p>Overload</p>
+              </div>
           </div>
         </Panel>
       </ReactFlow>

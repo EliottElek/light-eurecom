@@ -86,7 +86,7 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Hero() {
   return (
-    <div className="overflow-hidden h-screen flex items-center">
+    <div className="overflow-hidden h-screen min-h-[600px] flex items-center">
       <Container>
         <div className="text-center max-w-2xl mx-auto">
           <div className="relative z-10 mx-auto lg:col-span-7 xl:col-span-6">

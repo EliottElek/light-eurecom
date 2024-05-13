@@ -1,5 +1,5 @@
 {
-    "id": "8466177c-0eff-11ef-a5b4-ca504cda8544",
+    "id": "e7e85860-0f99-11ef-acb3-ca504cda8544",
     "name": "Basic XOR - 2 receivers",
     "step": 49,
     "description": "In this example, we're performing a basic multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets.",
@@ -59,7 +59,7 @@
                 "ip": "224.0.0.1",
                 "icon": "router",
                 "message": "",
-                "active": false
+                "active": true
             },
             "position": {
                 "x": -75,
@@ -77,7 +77,7 @@
                     "why_so_",
                     "not_so_"
                 ],
-                "message": "Performing why_so_ + serious",
+                "message": "Decoded message: why_so_serious",
                 "active": false
             },
             "position": {

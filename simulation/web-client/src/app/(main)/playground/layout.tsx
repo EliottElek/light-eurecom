@@ -1,29 +1,38 @@
-import { getAllDemos } from "@/lib/demos"
+import { getDemos, getLocalDemos } from "@/lib/demos"
 import { getAllSimulations } from "@/lib/simulation"
 import ActionPanel from "@/components/ActionPanel"
-import ErrorDialog from "@/components/ErrorDialog"
-
+import LocalDemosPanel from "@/components/LocalDemosPanel"
+import Link from "next/link"
+import { Logo } from "@/components/landing/Logo"
 export default async function SimulationLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    const demos = await getAllDemos()
+    const demos = await getDemos()
     const simulations = await getAllSimulations()
-
-    if (!demos || !simulations) return <main className="flex h-full grow oveflow-hidden">
-        <div className="w-[285px]">
-            <ActionPanel demos={[]} simulations={[]} />
-        </div>
-        <ErrorDialog error={"Could not reach the server."} details={'An error occured trying to reach the server. Come back later or contact support.'} />
-    </main>
+    const localDemos = await getLocalDemos()
 
     return (
         <main className="flex h-screen oveflow-hidden">
-            <div className="w-[285px]">
-                <ActionPanel demos={demos} simulations={simulations} />
+            <div className="!min-w-[320px] h-screen border-r overflow-y-auto">
+                <div className='mb-4 border-b p-4'>
+                    <Link href="/" aria-label="Home" className='relative'>
+                        <Logo className="h-8 w-auto" />
+                        <span className='absolute -bottom-2 font-semibold text-teal-500 left-28 italic text-xs'>Playground</span>
+                    </Link>
+                </div>
+                {demos && simulations ?
+                    <div>
+                        <ActionPanel demos={demos} simulations={simulations} />
+                    </div>
+                    : <div>
+                        {localDemos &&
+                            <LocalDemosPanel demos={localDemos} />
+                        }
+                    </div>}
             </div>
-            <div className="relative grow overflow-auto">{children}</div>
+            <div className="w-full overflow-auto">{children}</div>
         </main>
     )
 }
