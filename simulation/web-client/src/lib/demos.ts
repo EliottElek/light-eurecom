@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { promises as fs } from 'fs';
-import { redirect } from 'next/navigation';
+import path from 'path';
 
+const DEMOS_PATH = path.join(process.cwd(), 'src/demos/');
 
 export interface Demo {
   id: number
@@ -31,7 +32,7 @@ export async function getDemos(): Promise<Demo[] | null> {
 
 export async function getLocalDemos(): Promise<LocalDemo[] | null> {
   try {
-    const file = await fs.readFile('./src/demos/manifest.json', 'utf8');
+    const file = await fs.readFile(DEMOS_PATH + "manifest.json", 'utf8');
     const data = JSON.parse(file);
     return data as LocalDemo[]
   } catch (e) {
@@ -42,7 +43,7 @@ export async function getLocalDemos(): Promise<LocalDemo[] | null> {
 
 export async function getLocalDemo(demo_id: string): Promise<LocalDemo | null> {
   try {
-    const file = await fs.readFile(`./src/demos/demo${demo_id}.json`, 'utf8');
+    const file = await fs.readFile(DEMOS_PATH + `demo${demo_id}.json`, 'utf8');
     const data = JSON.parse(file);
     return data as LocalDemo
   } catch (e) {
