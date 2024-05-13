@@ -31,17 +31,18 @@ export async function getDemos(): Promise<Demo[] | null> {
 
 export async function getLocalDemos(): Promise<LocalDemo[] | null> {
   try {
-    const file = await fs.readFile(process.cwd() + '/src/demos/manifest.json', 'utf8');
+    const file = await fs.readFile('./src/demos/manifest.json', 'utf8');
     const data = JSON.parse(file);
     return data as LocalDemo[]
   } catch (e) {
+    console.log(e)
     return null
   }
 }
 
 export async function getLocalDemo(demo_id: string): Promise<LocalDemo | null> {
   try {
-    const file = await fs.readFile(process.cwd() + `/src/demos/demo${demo_id}.json`, 'utf8');
+    const file = await fs.readFile(`./src/demos/demo${demo_id}.json`, 'utf8');
     const data = JSON.parse(file);
     return data as LocalDemo
   } catch (e) {
