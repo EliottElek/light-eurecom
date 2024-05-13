@@ -16,7 +16,7 @@ export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
       <svg viewBox="0 0 40 40" aria-hidden="true" {...props}>
         <Logomark width="40" height="40" className="fill-teal-500" />
       </svg>
-      <span className="font-bold text-2xl">Maven</span>
+      <span className="font-bold text-2xl">Light</span>
     </div>
   )
 }

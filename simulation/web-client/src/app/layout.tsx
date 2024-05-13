@@ -13,8 +13,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Maven',
-    default: 'Maven - Custom content delivery over multicast',
+    template: '%s - Light',
+    default: 'Light - Custom content delivery over multicast',
   },
   description:
     'Custom content delivery over multicast',

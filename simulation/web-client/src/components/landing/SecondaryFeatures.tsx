@@ -24,7 +24,7 @@ const features = [
   {
     name: 'Profit from your network',
     description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
+      'Invite new insiders to get tips faster and beat even other Light users.',
     icon: DeviceListIcon,
   },
   {
@@ -200,7 +200,7 @@ export function SecondaryFeatures() {
           </h2>
           <p className="mt-2 text-lg text-gray-600">
             With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
+            future. With Light, it’s never too late to build your nest egg.
           </p>
         </div>
         <ul

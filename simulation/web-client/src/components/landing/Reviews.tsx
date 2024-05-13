@@ -16,25 +16,25 @@ interface Review {
 const reviews: Array<Review> = [
   {
     title: 'It really works.',
-    body: 'I downloaded Pocket today and turned $5000 into $25,000 in half an hour.',
+    body: 'I downloaded Light today and turned $5000 into $25,000 in half an hour.',
     author: 'CrazyInvestor',
     rating: 5,
   },
   {
     title: 'You need this app.',
-    body: 'I didn’t understand the stock market at all before Pocket. I still don’t, but at least I’m rich now.',
+    body: 'I didn’t understand the stock market at all before Light. I still don’t, but at least I’m rich now.',
     author: 'CluelessButRich',
     rating: 5,
   },
   {
     title: 'This shouldn’t be legal.',
-    body: 'Pocket makes it so easy to win big in the stock market that I can’t believe it’s actually legal.',
+    body: 'Light makes it so easy to win big in the stock market that I can’t believe it’s actually legal.',
     author: 'LivingDaDream',
     rating: 5,
   },
   {
     title: 'Screw financial advisors.',
-    body: 'I barely made any money investing in mutual funds. With Pocket, I’m doubling my net-worth every single month.',
+    body: 'I barely made any money investing in mutual funds. With Light, I’m doubling my net-worth every single month.',
     author: 'JordanBelfort1962',
     rating: 5,
   },
@@ -46,7 +46,7 @@ const reviews: Array<Review> = [
   },
   {
     title: 'Too good to be true.',
-    body: 'I was making money so fast with Pocket that it felt like a scam. But I sold my shares and withdrew the money and it’s really there, right in my bank account. This app is crazy!',
+    body: 'I was making money so fast with Light that it felt like a scam. But I sold my shares and withdrew the money and it’s really there, right in my bank account. This app is crazy!',
     author: 'LazyRich99',
     rating: 5,
   },
@@ -58,37 +58,37 @@ const reviews: Array<Review> = [
   },
   {
     title: 'Bought an island.',
-    body: 'Yeah, you read that right. Want your own island too? Get Pocket.',
+    body: 'Yeah, you read that right. Want your own island too? Get Light.',
     author: 'ScroogeMcduck',
     rating: 5,
   },
   {
     title: 'No more debt!',
-    body: 'After 2 weeks of trading on Pocket I was debt-free. Why did I even go to school at all when Pocket exists?',
+    body: 'After 2 weeks of trading on Light I was debt-free. Why did I even go to school at all when Light exists?',
     author: 'BruceWayne',
     rating: 5,
   },
   {
     title: 'I’m 13 and I’m rich.',
-    body: 'I love that with Pocket’s transaction anonymization I could sign up and start trading when I was 12 years old. I had a million dollars before I had armpit hair!',
+    body: 'I love that with Light’s transaction anonymization I could sign up and start trading when I was 12 years old. I had a million dollars before I had armpit hair!',
     author: 'RichieRich',
     rating: 5,
   },
   {
     title: 'Started an investment firm.',
-    body: 'I charge clients a 3% management fee and just throw all their investments into Pocket. Easy money!',
+    body: 'I charge clients a 3% management fee and just throw all their investments into Light. Easy money!',
     author: 'TheCountOfMonteChristo',
     rating: 5,
   },
   {
     title: 'It’s like a superpower.',
-    body: 'Every tip Pocket has sent me has paid off. It’s like playing Blackjack but knowing exactly what card is coming next!',
+    body: 'Every tip Light has sent me has paid off. It’s like playing Blackjack but knowing exactly what card is coming next!',
     author: 'ClarkKent',
     rating: 5,
   },
   {
     title: 'Quit my job.',
-    body: 'I downloaded Pocket three days ago and quit my job today. I can’t believe no one else thought to build a stock trading app that works this way!',
+    body: 'I downloaded Light three days ago and quit my job today. I can’t believe no one else thought to build a stock trading app that works this way!',
     author: 'GeorgeCostanza',
     rating: 5,
   },
@@ -282,7 +282,7 @@ export function Reviews() {
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-gray-900 sm:text-center"
         >
-          Everyone is changing their life with Pocket.
+          Everyone is changing their life with Light.
         </h2>
         <p className="mt-2 text-lg text-gray-600 sm:text-center">
           Thousands of people have doubled their net-worth in the last 30 days.
