@@ -15,7 +15,7 @@ export default async function SimulationLayout({
 
     return (
         <main className="flex h-screen oveflow-hidden">
-            <div className="!min-w-[320px] h-screen border-r overflow-y-auto">
+            <div className="!min-w-[320px] md:block hidden h-screen border-r overflow-y-auto">
                 <div className='mb-4 border-b p-4'>
                     <Link href="/" aria-label="Home" className='relative'>
                         <Logo className="h-8 w-auto" />
