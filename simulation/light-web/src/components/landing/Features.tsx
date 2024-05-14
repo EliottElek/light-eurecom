@@ -49,14 +49,14 @@ export default function Features() {
                 <div className="mx-auto mt-3 max-w-2xl lg:max-w-none">
                     <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
                         {features.map((feature) => (
-                            <div key={feature.name} className="flex border border-gray-200 rounded-lg flex-col p-8">
-                                <dt className="text-base font-semibold leading-7 text-gray-900">
+                            <div key={feature.name} className="flex border border-gray-200 dark:border-gray-400/20 rounded-lg flex-col p-8">
+                                <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-white dark:text">
                                     <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
                                         {feature.icon}
                                     </div>
                                     {feature.name}
                                 </dt>
-                                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-400">
                                     <ul className="flex-auto">
                                         {feature.points.map((point: string) => <li>
                                             {point}

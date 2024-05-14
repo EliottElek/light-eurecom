@@ -177,10 +177,10 @@ export function SecondaryFeatures() {
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
             Light VoD technology
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
+          <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
             Light VoD technology streamlines VoD delivery, reducing delay, bandwidth usage, and data transmission volumes without infrastructure overhauls. With minimal modifications to systems, experience unparalleled efficiency and scalability.
           </p>
         </div>
@@ -191,18 +191,18 @@ export function SecondaryFeatures() {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+              className="rounded-2xl border border-gray-200 dark:border-gray-400/20 p-8"
             >
               <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 font-semibold text-gray-900">
+              <h3 className="mt-6 font-semibold text-gray-900 dark:text-gray-200">
                 {feature.name}
               </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
+              <p className="mt-2 text-gray-700 dark:text-gray-400">{feature.description}</p>
             </li>
           ))}
         </ul>
         <div className="mx-auto mt-24 sm:text-center">
-          <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-10 text-base leading-7 text-gray-600 sm:grid-cols-2 lg:gap-y-16">
+          <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-10 text-base leading-7 text-gray-600 dark:text-gray-400 sm:grid-cols-2 lg:gap-y-16">
             <div className="relative pl-9">
               <dt className="font-semibold text-gray-900">
                 <CheckBadgeIcon className="absolute left-0 top-3 h-7 w-7 text-primary" aria-hidden="true" />

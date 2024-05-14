@@ -1,75 +1,5 @@
-import { useId } from 'react'
 import { Button } from '@/components/landing/Button'
 import { Container } from '@/components/landing/Container'
-
-function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
-  let id = useId()
-
-  return (
-    <div {...props}>
-      <svg
-        viewBox="0 0 1026 1026"
-        fill="none"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full animate-spin-slow"
-      >
-        <path
-          d="M1025 513c0 282.77-229.23 512-512 512S1 795.77 1 513 230.23 1 513 1s512 229.23 512 512Z"
-          stroke="#D4D4D4"
-          strokeOpacity="0.7"
-        />
-        <path
-          d="M513 1025C230.23 1025 1 795.77 1 513"
-          stroke={`url(#${id}-gradient-1)`}
-          strokeLinecap="round"
-        />
-        <defs>
-          <linearGradient
-            id={`${id}-gradient-1`}
-            x1="1"
-            y1="513"
-            x2="1"
-            y2="1025"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#06b6d4" />
-            <stop offset="1" stopColor="#06b6d4" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <svg
-        viewBox="0 0 1026 1026"
-        fill="none"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full animate-spin-reverse-slower"
-      >
-        <path
-          d="M913 513c0 220.914-179.086 400-400 400S113 733.914 113 513s179.086-400 400-400 400 179.086 400 400Z"
-          stroke="#D4D4D4"
-          strokeOpacity="0.7"
-        />
-        <path
-          d="M913 513c0 220.914-179.086 400-400 400"
-          stroke={`url(#${id}-gradient-2)`}
-          strokeLinecap="round"
-        />
-        <defs>
-          <linearGradient
-            id={`${id}-gradient-2`}
-            x1="913"
-            y1="513"
-            x2="913"
-            y2="913"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#06b6d4" />
-            <stop offset="1" stopColor="#06b6d4" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  )
-}
 
 function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -86,13 +16,13 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Hero() {
   return (
-    <div className="overflow-hidden border-b border-gray-200 h-screen min-h-[600px] flex items-center">
+    <div className="overflow-hidden border-b border-gray-200 dark:border-gray-400/20 h-screen min-h-[600px] flex items-center">
       <Container>
         <div className="text-center max-w-4xl mx-auto">
           <div className="relative z-10 mx-auto lg:col-span-7 xl:col-span-6">
-            <h1 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl font-bold tracking-tight text-gray-900">
+            <h1 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl font-bold tracking-tight dark:text-white text-gray-900">
               <span className='text-primary'>Redefining</span> Video on Demand (VoD) in Wireless and Wired Networks</h1>
-            <p className="mt-6 text-lg text-gray-600">
+            <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
               Cache-aided multicasting for Reducing VoD Loads in Networks.
             </p>
             <div className="mt-16 flex justify-center flex-wrap gap-x-6 gap-y-4">

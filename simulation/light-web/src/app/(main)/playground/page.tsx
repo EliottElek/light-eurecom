@@ -7,8 +7,8 @@ const page = async () => {
   return (
     <div className='lg:p-12 p-4'>
       <div className='prose'>
-        <h1 className='my-0'>Playground</h1>
-        <p className='mb-4 text-gray-600'>Play simulations to understand how the principle works.</p>
+        <h1 className='my-0 text-gray-900 dark:text-white'>Playground</h1>
+        <p className='mb-4 text-gray-600 dark:text-gray-400'>Play simulations to understand how the principle works.</p>
       </div>
       {/* <HomeActionPanel demos={demos} /> */}
       <LocalHomeActionPanel demos={demos} />

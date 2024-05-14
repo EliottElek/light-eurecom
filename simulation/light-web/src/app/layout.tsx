@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import clsx from 'clsx'
-
+import { Providers } from './providers'
 import '@/styles/tailwind.css'
 import { type Metadata } from 'next'
 import { Toaster } from 'react-hot-toast'
@@ -26,9 +26,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={clsx('bg-gray-50 antialiased', inter.variable)}>
-      <body>{children}
-        <Toaster />
+
+    <html lang="en" suppressHydrationWarning>
+      <body className={clsx('bg-gray-50 dark:bg-gray-800')}>
+        <Providers>
+          {children}
+          <Toaster />
+        </Providers>
       </body>
     </html>
   )

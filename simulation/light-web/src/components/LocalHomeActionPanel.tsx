@@ -13,15 +13,15 @@ const LocalHomeActionPanel = ({ demos }: { demos: LocalDemo[] | null }) => {
                             <div className='h-40 border rounded-md overflow-hidden'>
                                 <Image alt={demo.name} height={400} width={400} className='object-cover h-full w-full' src={demo.image} />
                             </div>
-                            <p className='prose mt-2 font-semibold text-sm'>{demo.name}</p>
-                            <p className='prose mt-2 text-sm truncate text-gray-600'>{demo.description}</p>
+                            <p className='prose mt-2 font-semibold text-gray-700 dark:text-gray-200 text-sm'>{demo.name}</p>
+                            <p className='prose mt-2 text-sm truncate text-gray-600 dark:text-gray-400'>{demo.description}</p>
                         </Link> :
                         <span className="w-full  h-full text-left relative">
                             <div className='h-40 opacity-50 border rounded-md overflow-hidden'>
                                 <Image alt={demo.name} height={400} width={400} className='object-cover h-full w-full' src={demo.image} />
                             </div>
-                            <p className='prose opacity-50 mt-2 font-semibold text-sm'>{demo.name}</p>
-                            <p className='prose opacity-50 mt-2 text-sm truncate text-gray-600'>{demo.description}</p>
+                            <p className='prose opacity-50 mt-2 font-semibold text-gray-700 dark:text-gray-200 text-sm'>{demo.name}</p>
+                            <p className='prose opacity-50 mt-2 text-sm truncate text-gray-600 dark:text-gray-400'>{demo.description}</p>
                             <span><span className="absolute top-1 left-1 inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-600/20">
                                 Comming soon
                             </span></span>

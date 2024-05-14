@@ -13,10 +13,10 @@ const variantStyles = {
     teal: 'relative overflow-hidden bg-primary text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-primary active:text-white/80 before:transition-colors',
     white:
       'bg-white text-teal-900 hover:bg-white/90 active:bg-white/90 active:text-teal-900/70',
-    gray: 'bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80',
+    gray: 'bg-gray-800 dark:bg-primary text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80',
   },
   outline: {
-    gray: 'border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80',
+    gray: 'border-gray-300 dark:border-gray-300/30 text-gray-700 dark:text-gray-300 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80',
   },
 }
 

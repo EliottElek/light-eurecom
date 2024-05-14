@@ -37,7 +37,7 @@ const Canva = ({ data }: { data: any }) => {
         className="bg-primary/10"
       >
         <Background variant={"dots" as BackgroundVariant} />
-        <Controls />
+        {/* <Controls /> */}
         <Panel position="top-left">
           <div className='prose relative p-4 bg-white shadow rounded-md'>
             <Link className='absolute text-primary top-2 left-2 underline flex items-center gap-1 text-sm' href="/playground"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

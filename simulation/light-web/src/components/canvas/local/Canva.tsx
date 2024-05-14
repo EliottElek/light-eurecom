@@ -42,18 +42,18 @@ const Canva = ({ data }: { data: any }) => {
         className="bg-primary/10"
       >
         <Background variant={"dots" as BackgroundVariant} />
-        <Controls />
+        {/* <Controls className='bg-gray-900'/> */}
         <Panel position="top-left">
-          <div className='prose relative p-4 bg-white shadow rounded-md'>
+          <div className='prose relative p-4 bg-white dark:bg-gray-800 shadow rounded-md'>
             <Link className='absolute text-primary top-2 left-2 underline flex items-center gap-1 text-sm' href="/playground"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
               Back to playground
             </Link>
-            <h2 className='!mt-8 !mb-4'>
+            <h2 className='!mt-8 !mb-4 text-gray-900 dark:text-white'>
               {data.name}
             </h2>
-            <p>{data.steps[step].description || data.description}</p>
+            <p className='text-gray-700 dark:text-gray-300'>{data.steps[step].description || data.description}</p>
             <div className='absolute top-4 right-4'>
               <div>
                 <span className="isolate inline-flex rounded-md shadow-sm">
@@ -61,7 +61,7 @@ const Canva = ({ data }: { data: any }) => {
                     disabled={step === 0}
                     onClick={() => updateStep(-1)}
                     type="button"
-                    className="relative disabled:opacity-50 inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                    className="relative disabled:opacity-50 inline-flex items-center rounded-l-md bg-white dark:bg-gray-700 px-2 py-2 text-gray-400 dark:text-gray-300 ring-1 ring-inset ring-gray-300/20 hover:bg-gray-50 focus:z-10"
                   >
                     <span className="sr-only">Previous</span>
                     <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
@@ -70,7 +70,7 @@ const Canva = ({ data }: { data: any }) => {
                     disabled={step === data.steps.length - 1}
                     onClick={() => updateStep(1)}
                     type="button"
-                    className="relative disabled:opacity-50 -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                    className="relative disabled:opacity-50 inline-flex items-center rounded-r-md bg-white dark:bg-gray-700 px-2 py-2 text-gray-400 dark:text-gray-300 ring-1 ring-inset ring-gray-300/20 hover:bg-gray-50 focus:z-10"
                   >
                     <span className="sr-only">Next</span>
                     <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
@@ -78,13 +78,13 @@ const Canva = ({ data }: { data: any }) => {
                 </span>
               </div>
               <div>
-                <span className='text-sm'>Step {step + 1} of {data.steps.length}</span>
+                <span className='text-sm text-gray-700 dark:text-gray-300'>Step {step + 1} of {data.steps.length}</span>
               </div>
             </div>
           </div>
         </Panel>
         <Panel position="bottom-right">
-          <div className='p-4 max-w-xl flex flex-col gap-2 bg-white shadow rounded-md'>
+          <div className='p-4 max-w-xl flex flex-col gap-2 bg-white dark:bg-gray-800 shadow rounded-md'>
             <h2 className='mb-3 italic underline text-sm'>
               Legends:
             </h2>

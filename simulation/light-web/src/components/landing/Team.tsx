@@ -21,13 +21,13 @@ const people = [
 
 export default function Team() {
     return (
-        <div className="bg-white py-24 md:py-32">
+        <div className="py-24 md:py-32">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-5">
                 <div className="max-w-2xl xl:col-span-2">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">About the team</h2>
-                    <p className="mt-6 text-lg leading-8 text-gray-600">
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">About the team</h2>
+                    <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
                         We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
-                        best results for our clients.
+                        best results.
                     </p>
                 </div>
                 <ul role="list" className="-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3">
@@ -35,10 +35,10 @@ export default function Team() {
                         <li key={person.name} className="flex flex-col gap-10 pt-12 sm:flex-row">
                             <img className="aspect-[3/4] w-52 h-72 flex-none rounded-2xl object-cover" src={person.imageUrl} alt="" />
                             <div className="max-w-xl flex-auto">
-                                <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900">{person.name}</h3>
-                                <p className="text-base leading-7 font-normal text-gray-700">{person.role}</p>
-                                <p className="mt-6 text-base leading-7 text-gray-500">{person.bio}</p>
-                                <div className="mt-6 text-base leading-7 text-gray-500">
+                                <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900 dark:text-white">{person.name}</h3>
+                                <p className="text-base leading-7 font-normal text-gray-700 dark:text-gray-400">{person.role}</p>
+                                <p className="mt-6 text-base leading-7 text-gray-500 dark:text-gray-300">{person.bio}</p>
+                                <div className="mt-6 text-base leading-7 text-gray-500 dark:text-gray-300">
                                     <ul className="not-prose italic">
                                         {person.themes.map((theme: string) => <li>
                                             {theme}
