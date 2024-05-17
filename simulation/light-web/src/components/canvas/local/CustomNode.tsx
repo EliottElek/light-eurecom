@@ -51,7 +51,7 @@ function CustomNode({ data }: { data: any }) {
                 }
             </div>
             <div className='absolute -bottom-2 translate-y-full'>
-                {data.message}
+                {Array.isArray(data.message) ? <ul>{data.message.map((m: string) => <li>{m}</li>)}</ul> : data.message}
             </div>
             {data.cache &&
                 <div className='absolute top-4 right-4 -translate-y-full translate-x-full p-1 px-3 shadow rounded-md border border-gray-200 dark:border-gray-400/20 bg-white dark:bg-gray-800'>
