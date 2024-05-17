@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
 
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx('bg-gray-50 dark:bg-gray-800')}>
+      <body className={clsx('bg-gray-50 dark:bg-slate-900')}>
         <Providers>
           {children}
           <Toaster />

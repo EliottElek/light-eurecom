@@ -1,18 +1,28 @@
 {
     "name": "Basic example",
-    "description": "In this example, we're performing a basic multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets.",
+    "description": "In this example, we're performing a basic multicast flow between two Edge servers. This simply demonstrates that two Edge servers, subscribed to a multicast server, receive the same packets.",
     "steps": [
         {
-            "description": "In this example, we'll simulate a basic example. The server is a quote service, distributing well known quotes.",
+            "description": "In this example, we'll simulate a basic example. The server is a quote service, distributing well known quotes. → Basic example: An origin server stores in its DB and serves a catalog of files (here: files correspond to well known quotes).",
             "edges": [
                 {
-                    "id": "e1-2",
+                    "id": "e1-5",
                     "source": "1",
-                    "target": "2",
+                    "target": "5",
                     "animated": false,
                     "style": {
                         "strokeWidth": 3
                     }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
                 },
                 {
                     "id": "e2-3",
@@ -40,7 +50,7 @@
                     "id": "1",
                     "type": "custom",
                     "data": {
-                        "name": "Main server",
+                        "name": "Origin server",
                         "ip": "127.0.0.1",
                         "icon": "server",
                         "message": "",
@@ -51,11 +61,11 @@
                             "Seize the day.",
                             "Life is short, eat dessert first."
                         ],
-                        "overload": 20,
+                        "volume": 0,
                         "active": true
                     },
                     "position": {
-                        "x": -400,
+                        "x": -600,
                         "y": 150
                     }
                 },
@@ -63,11 +73,11 @@
                     "id": "2",
                     "type": "custom",
                     "data": {
-                        "name": "Multicast router",
+                        "name": "Router (multicasting)",
                         "ip": "224.0.0.1",
                         "icon": "router",
                         "message": "",
-                        "overload": 0,
+                        "volume": 0,
                         "active": false
                     },
                     "position": {
@@ -79,12 +89,16 @@
                     "id": "3",
                     "type": "custom",
                     "data": {
-                        "name": "Receiver 1",
+                        "name": "Edge server 1",
                         "ip": "127.0.0.2",
                         "icon": "client",
-                        "overload": 0,
+                        "volume": 0,
                         "message": "",
-                        "active": false
+                        "active": false,
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ]
                     },
                     "position": {
                         "x": 330,
@@ -95,228 +109,36 @@
                     "id": "4",
                     "type": "custom",
                     "data": {
-                        "name": "Receiver 2",
+                        "name": "Edge server 2",
                         "ip": "127.0.0.3",
                         "icon": "client",
                         "message": "",
-                        "overload": 0,
-                        "active": false
+                        "volume": 0,
+                        "active": false,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ]
                     },
                     "position": {
                         "x": 330,
                         "y": 310
                     }
-                }
-            ]
-        },
-        {
-            "description": "Receiver 1 and Receiver 2 both request different quotes: R1 : 'All you need is love.' and R2: 'I think, therefore I am.'.",
-            "edges": [
-                {
-                    "id": "e1-2",
-                    "source": "1",
-                    "target": "2",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    }
                 },
                 {
-                    "id": "e2-3",
-                    "source": "2",
-                    "target": "3",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                },
-                {
-                    "id": "e2-4",
-                    "source": "2",
-                    "target": "4",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                }
-            ],
-            "nodes": [
-                {
-                    "id": "1",
+                    "id": "5",
                     "type": "custom",
                     "data": {
-                        "name": "Main server",
-                        "ip": "127.0.0.1",
-                        "icon": "server",
-                        "message": "",
-                        "storage": [
-                            "To infinity and beyond!",
-                            "I think, therefore I am.",
-                            "All you need is love.",
-                            "Seize the day.",
-                            "Life is short, eat dessert first."
-                        ],
-                        "overload": 20,
-                        "active": false
-                    },
-                    "position": {
-                        "x": -400,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "2",
-                    "type": "custom",
-                    "data": {
-                        "name": "Multicast router",
-                        "ip": "224.0.0.1",
-                        "icon": "router",
-                        "message": "",
-                        "overload": 0,
-                        "active": false
-                    },
-                    "position": {
-                        "x": -75,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "3",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 1",
-                        "ip": "127.0.0.2",
-                        "icon": "client",
-                        "overload": 20,
-                        "message": "Requesting server quote 'All you need is love.'",
-                        "active": true
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 0
-                    }
-                },
-                {
-                    "id": "4",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 2",
+                        "name": "Internet",
                         "ip": "127.0.0.3",
-                        "icon": "client",
-                        "overload": 20,
-                        "message": "Requesting server quote 'I think, therefore I am.'",
-                        "active": true
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 310
-                    }
-                }
-            ]
-        },
-        {
-            "description": "Server receives the requests and proceeds with the response process. Receiving requests for 'I think, therefore I am.' and 'All you need is love.'.",
-            "edges": [
-                {
-                    "id": "e1-2",
-                    "source": "1",
-                    "target": "2",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    }
-                },
-                {
-                    "id": "e2-3",
-                    "source": "2",
-                    "target": "3",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                },
-                {
-                    "id": "e2-4",
-                    "source": "2",
-                    "target": "4",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                }
-            ],
-            "nodes": [
-                {
-                    "id": "1",
-                    "type": "custom",
-                    "data": {
-                        "name": "Main server",
-                        "ip": "127.0.0.1",
-                        "icon": "server",
-                        "storage": [
-                            "To infinity and beyond!",
-                            "I think, therefore I am.",
-                            "All you need is love.",
-                            "Seize the day.",
-                            "Life is short, eat dessert first."
-                        ],
-                        "message": "Receiving requests for 'I think, therefore I am.' and 'All you need is love.'.",
-                        "active": true
-                    },
-                    "position": {
-                        "x": -400,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "2",
-                    "type": "custom",
-                    "data": {
-                        "name": "Multicast router",
-                        "ip": "224.0.0.1",
-                        "icon": "router",
+                        "icon": "internet",
                         "message": "",
+                        "volume": 0,
                         "active": false
                     },
                     "position": {
-                        "x": -75,
+                        "x": -300,
                         "y": 150
-                    }
-                },
-                {
-                    "id": "3",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 1",
-                        "ip": "127.0.0.2",
-                        "icon": "client",
-                        "overload": 0,
-                        "message": "Awaiting response",
-                        "active": false
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 0
-                    }
-                },
-                {
-                    "id": "4",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 2",
-                        "ip": "127.0.0.3",
-                        "icon": "client",
-                        "message": "Awaiting response",
-                        "overload": 0,
-                        "active": false
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 310
                     }
                 }
             ]
@@ -325,13 +147,23 @@
             "description": "The server splits the two messages in two : v1='I think, there', v2=' fore I am.' and v3='All you ne', v4='ed is love.'",
             "edges": [
                 {
-                    "id": "e1-2",
+                    "id": "e1-5",
                     "source": "1",
-                    "target": "2",
+                    "target": "5",
                     "animated": false,
                     "style": {
                         "strokeWidth": 3
                     }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
                 },
                 {
                     "id": "e2-3",
@@ -369,11 +201,10 @@
                             "Seize the day.",
                             "Life is short, eat dessert first."
                         ],
-                        "message": "Splitting the two messages in two: v1='I think, there', v2=' fore I am.' and v3='All you ne', v4='ed is love.'",
                         "active": true
                     },
                     "position": {
-                        "x": -400,
+                        "x": -600,
                         "y": 150
                     }
                 },
@@ -396,231 +227,10 @@
                     "id": "3",
                     "type": "custom",
                     "data": {
-                        "name": "Receiver 1",
+                        "name": "Edge server 1",
                         "ip": "127.0.0.2",
                         "icon": "client",
-                        "overload": 0,
-                        "message": "Awaiting response",
-                        "active": false
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 0
-                    }
-                },
-                {
-                    "id": "4",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 2",
-                        "ip": "127.0.0.3",
-                        "icon": "client",
-                        "message": "Awaiting response",
-                        "overload": 0,
-                        "active": false
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 310
-                    }
-                }
-            ]
-        },
-        {
-            "description": "The server then sends v1 and v3 to store in cache at R1, and v2 and v4 to store at R2.",
-            "edges": [
-                {
-                    "id": "e1-2",
-                    "source": "1",
-                    "target": "2",
-                    "animated": true,
-                    "style": {
-                        "strokeWidth": 3
-                    }
-                },
-                {
-                    "id": "e2-3",
-                    "source": "2",
-                    "target": "3",
-                    "animated": true,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                },
-                {
-                    "id": "e2-4",
-                    "source": "2",
-                    "target": "4",
-                    "animated": true,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                }
-            ],
-            "nodes": [
-                {
-                    "id": "1",
-                    "type": "custom",
-                    "data": {
-                        "name": "Main server",
-                        "ip": "127.0.0.1",
-                        "icon": "server",
-                        "storage": [
-                            "To infinity and beyond!",
-                            "I think, therefore I am.",
-                            "All you need is love.",
-                            "Seize the day.",
-                            "Life is short, eat dessert first."
-                        ],
-                        "message": "Sending receivers their respective caches",
-                        "active": true
-                    },
-                    "position": {
-                        "x": -400,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "2",
-                    "type": "custom",
-                    "data": {
-                        "name": "Multicast router",
-                        "ip": "224.0.0.1",
-                        "icon": "router",
-                        "message": "",
-                        "overload": 20,
-                        "active": true
-                    },
-                    "position": {
-                        "x": -75,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "3",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 1",
-                        "ip": "127.0.0.2",
-                        "icon": "client",
-                        "overload": 20,
-                        "message": "Caching v1 and v3",
-                        "cache": [
-                            "I think, there",
-                            "All you ne"
-                        ],
-                        "active": true
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 0
-                    }
-                },
-                {
-                    "id": "4",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 2",
-                        "ip": "127.0.0.3",
-                        "icon": "client",
-                        "message": "Caching v2 and v4",
-                        "overload": 20,
-                        "cache": [
-                            " fore I am.",
-                            "ed is love."
-                        ],
-                        "active": true
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 310
-                    }
-                }
-            ]
-        },
-        {
-            "description": "The server then prepares v2 ⊕ v3 by xoring their bits together. The package is then of size 16MB, and is the same for every receiver.",
-            "edges": [
-                {
-                    "id": "e1-2",
-                    "source": "1",
-                    "target": "2",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    }
-                },
-                {
-                    "id": "e2-3",
-                    "source": "2",
-                    "target": "3",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                },
-                {
-                    "id": "e2-4",
-                    "source": "2",
-                    "target": "4",
-                    "animated": false,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                }
-            ],
-            "nodes": [
-                {
-                    "id": "1",
-                    "type": "custom",
-                    "data": {
-                        "name": "Main server",
-                        "ip": "127.0.0.1",
-                        "icon": "server",
-                        "storage": [
-                            "To infinity and beyond!",
-                            "I think, therefore I am.",
-                            "All you need is love.",
-                            "Seize the day.",
-                            "Life is short, eat dessert first."
-                        ],
-                        "message": "Preparing v2 ⊕ v3",
-                        "active": true
-                    },
-                    "position": {
-                        "x": -400,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "2",
-                    "type": "custom",
-                    "data": {
-                        "name": "Multicast router",
-                        "ip": "224.0.0.1",
-                        "icon": "router",
-                        "message": "",
-                        "overload": 0,
-                        "active": false
-                    },
-                    "position": {
-                        "x": -75,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "3",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 1",
-                        "ip": "127.0.0.2",
-                        "icon": "client",
-                        "overload": 0,
-                        "message": "Waiting for server final response",
+                        "volume": 0,
                         "cache": [
                             "I think, there",
                             "All you ne"
@@ -636,11 +246,10 @@
                     "id": "4",
                     "type": "custom",
                     "data": {
-                        "name": "Receiver 2",
+                        "name": "Edge server 2",
                         "ip": "127.0.0.3",
                         "icon": "client",
-                        "message": "Waiting for server final response",
-                        "overload": 0,
+                        "volume": 0,
                         "cache": [
                             " fore I am.",
                             "ed is love."
@@ -651,134 +260,46 @@
                         "x": 330,
                         "y": 310
                     }
-                }
-            ]
-        },
-        {
-            "description": "The server then sends v2 ⊕ v3 to R1 and R2 so that they can decode on their sides.",
-            "edges": [
-                {
-                    "id": "e1-2",
-                    "source": "1",
-                    "target": "2",
-                    "animated": true,
-                    "style": {
-                        "strokeWidth": 3
-                    }
                 },
                 {
-                    "id": "e2-3",
-                    "source": "2",
-                    "target": "3",
-                    "animated": true,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                },
-                {
-                    "id": "e2-4",
-                    "source": "2",
-                    "target": "4",
-                    "animated": true,
-                    "style": {
-                        "strokeWidth": 3
-                    },
-                    "label": null
-                }
-            ],
-            "nodes": [
-                {
-                    "id": "1",
+                    "id": "5",
                     "type": "custom",
                     "data": {
-                        "name": "Main server",
-                        "ip": "127.0.0.1",
-                        "icon": "server",
-                        "storage": [
-                            "To infinity and beyond!",
-                            "I think, therefore I am.",
-                            "All you need is love.",
-                            "Seize the day.",
-                            "Life is short, eat dessert first."
-                        ],
-                        "message": "Sending v2 ⊕ v3...",
-                        "active": true
-                    },
-                    "position": {
-                        "x": -400,
-                        "y": 150
-                    }
-                },
-                {
-                    "id": "2",
-                    "type": "custom",
-                    "data": {
-                        "name": "Multicast router",
-                        "ip": "224.0.0.1",
-                        "icon": "router",
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
                         "message": "",
-                        "overload": 20,
+                        "volume": 0,
                         "active": false
                     },
                     "position": {
-                        "x": -75,
+                        "x": -300,
                         "y": 150
-                    }
-                },
-                {
-                    "id": "3",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 1",
-                        "ip": "127.0.0.2",
-                        "icon": "client",
-                        "overload": 20,
-                        "message": "Receiving v2 ⊕ v3",
-                        "cache": [
-                            "I think, there",
-                            "All you ne"
-                        ],
-                        "active": false
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 0
-                    }
-                },
-                {
-                    "id": "4",
-                    "type": "custom",
-                    "data": {
-                        "name": "Receiver 2",
-                        "ip": "127.0.0.3",
-                        "icon": "client",
-                        "message": "Receiving v2 ⊕ v3",
-                        "overload": 20,
-                        "cache": [
-                            " fore I am.",
-                            "ed is love."
-                        ],
-                        "active": false
-                    },
-                    "position": {
-                        "x": 330,
-                        "y": 310
                     }
                 }
             ]
         },
         {
-            "description": "The receivers receive the same packet and proceed with the decoding of the content, using their respective cache.",
+            "description": "The server then sends v1 and v3 to store in cache at R1, and v2 and v4 to store at R2.” → “The edge servers have a cache with storage capacity of 1 file. However, they do not store 1 entire file, but they store 2 parts of 2 files (different parts at each edge server).",
             "edges": [
                 {
-                    "id": "e1-2",
+                    "id": "e1-5",
                     "source": "1",
-                    "target": "2",
+                    "target": "5",
                     "animated": false,
                     "style": {
                         "strokeWidth": 3
                     }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
                 },
                 {
                     "id": "e2-3",
@@ -806,7 +327,7 @@
                     "id": "1",
                     "type": "custom",
                     "data": {
-                        "name": "Main server",
+                        "name": "Origin server",
                         "ip": "127.0.0.1",
                         "icon": "server",
                         "storage": [
@@ -817,10 +338,10 @@
                             "Life is short, eat dessert first."
                         ],
                         "message": "",
-                        "active": false
+                        "active": true
                     },
                     "position": {
-                        "x": -400,
+                        "x": -600,
                         "y": 150
                     }
                 },
@@ -828,11 +349,11 @@
                     "id": "2",
                     "type": "custom",
                     "data": {
-                        "name": "Multicast router",
+                        "name": "Router (multicasting)",
                         "ip": "224.0.0.1",
                         "icon": "router",
                         "message": "",
-                        "overload": 20,
+                        "volume": 0,
                         "active": false
                     },
                     "position": {
@@ -844,11 +365,152 @@
                     "id": "3",
                     "type": "custom",
                     "data": {
-                        "name": "Receiver 1",
+                        "name": "Edge server 1",
                         "ip": "127.0.0.2",
                         "icon": "client",
-                        "overload": 20,
-                        "message": "Receiving v2 ⊕ v3 and performing (v2 ⊕ v3) xor v3",
+                        "volume": 0,
+                        "message": "",
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": false
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "message": "",
+                        "volume": 0,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ],
+                        "active": false
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Receiver 1 and Receiver 2 both request different quotes: R1 : 'All you need is love.' and R2: 'I think, therefore I am.'.” → “Edge servers 1 and 2 request different files: 'All you need is love.' and R2: 'I think, therefore I am.' respectively.",
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "message": "",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "message": "Requesting server quote 'All you need is love.'",
                         "cache": [
                             "I think, there",
                             "All you ne"
@@ -864,11 +526,288 @@
                     "id": "4",
                     "type": "custom",
                     "data": {
-                        "name": "Receiver 2",
+                        "name": "Edge server 2",
                         "ip": "127.0.0.3",
                         "icon": "client",
-                        "message": "Receiving v2 ⊕ v3 and performing (v2 ⊕ v3) xor v2",
-                        "overload": 20,
+                        "volume": 20,
+                        "message": "Requesting server quote 'I think, therefore I am.'",
+                        "active": true,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ]
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": "Server receives the requests and proceeds with the response process. Receiving requests for 'I think, therefore I am.' and 'All you need is love.'. → The origin server receives the requests and proceeds with the response process.",
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": false
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "volume": 20,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ],
+                        "active": false
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": "The server then prepares v2 ⊕ v3 by xoring their bits together. The package is then of size 16MB, and is the same for every receiver. → The origin server combines the 2nd part of the 1st file and the 1st part of the 2nd file, and sends the coded message; in total, it sends a message of size 50% of a file.",
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "message": "Coded message: file1 ⊕ file2",
+                        "active": false
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "message": "",
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "message": "",
+                        "volume": 20,
                         "cache": [
                             " fore I am.",
                             "ed is love."
@@ -878,6 +817,586 @@
                     "position": {
                         "x": 330,
                         "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": "The server then sends v2 ⊕ v3 to R1 and R2 so that they can decode on their sides.” → “The origin server sends the coded message (50% of file size) to the edge servers as a single file. The multicast router multicasts the message to the edge servers.",
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "message": "Coded message: file1 ⊕ file2",
+                        "active": false
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "message": "",
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "message": "",
+                        "volume": 20,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": "The receivers receive the same packet and proceed with the decoding of the content, using their respective cache. → The edge servers receive the same message and proceed with the decoding of the content using their respective cache.",
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": true,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "message": "Coded message: file1 ⊕ file2",
+                        "active": false
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "message": "",
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "message": "",
+                        "volume": 20,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": "The receivers receive the same packet and proceed with the decoding of the content, using their respective cache.” → “The edge servers receive the same message and proceed with the decoding of the content using their respective cache.",
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "active": false
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "message": "Decoded message: 'I think, therefore I am.'",
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "message": "Decoded message: 'All you need is love.'",
+                        "volume": 20,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
+                    }
+                }
+            ]
+        },
+        {
+            "description": [
+                "The edge servers requested 2 different files; each of them has a cache of 1 file size.",
+                "The origin server sent 50% of a file over the Internet.",
+                "The router multicast the message (50% of file size) to both edge servers",
+                "The edge servers can decode the entire file",
+                "Without cache-aided multicast, the origin server would have to send 100% of a file (at least)."
+            ],
+            "edges": [
+                {
+                    "id": "e1-5",
+                    "source": "1",
+                    "target": "5",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "id": "e5-2",
+                    "source": "5",
+                    "target": "2",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-3",
+                    "source": "2",
+                    "target": "3",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                },
+                {
+                    "id": "e2-4",
+                    "source": "2",
+                    "target": "4",
+                    "animated": false,
+                    "style": {
+                        "strokeWidth": 3
+                    },
+                    "label": null
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "1",
+                    "type": "custom",
+                    "data": {
+                        "name": "Origin server",
+                        "ip": "127.0.0.1",
+                        "icon": "server",
+                        "storage": [
+                            "To infinity and beyond!",
+                            "I think, therefore I am.",
+                            "All you need is love.",
+                            "Seize the day.",
+                            "Life is short, eat dessert first."
+                        ],
+                        "active": false
+                    },
+                    "position": {
+                        "x": -600,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "2",
+                    "type": "custom",
+                    "data": {
+                        "name": "Router (multicasting)",
+                        "ip": "224.0.0.1",
+                        "icon": "router",
+                        "message": "",
+                        "volume": 20,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -75,
+                        "y": 150
+                    }
+                },
+                {
+                    "id": "3",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 1",
+                        "ip": "127.0.0.2",
+                        "icon": "client",
+                        "volume": 20,
+                        "message": "Decoded message: 'I think, therefore I am.'",
+                        "cache": [
+                            "I think, there",
+                            "All you ne"
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 0
+                    }
+                },
+                {
+                    "id": "4",
+                    "type": "custom",
+                    "data": {
+                        "name": "Edge server 2",
+                        "ip": "127.0.0.3",
+                        "icon": "client",
+                        "message": "Decoded message: 'All you need is love.'",
+                        "volume": 20,
+                        "cache": [
+                            " fore I am.",
+                            "ed is love."
+                        ],
+                        "active": true
+                    },
+                    "position": {
+                        "x": 330,
+                        "y": 310
+                    }
+                },
+                {
+                    "id": "5",
+                    "type": "custom",
+                    "data": {
+                        "name": "Internet",
+                        "ip": "127.0.0.3",
+                        "icon": "internet",
+                        "message": "",
+                        "volume": 0,
+                        "active": false
+                    },
+                    "position": {
+                        "x": -300,
+                        "y": 150
                     }
                 }
             ]

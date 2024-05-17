@@ -11,7 +11,7 @@ export default {
         sans: ['Satoshi', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        "primary": "#FFBE5A"
+        "primary": "#14B883"
       },
       spacing: {
         18: '4.5rem',

@@ -8,10 +8,13 @@ import Link from 'next/link';
 import CacheIcon from '../../CacheIcon';
 import ProgressBar from '../ProgessBar';
 import DbIcon from '@/components/DbIcon';
+import EditDrawer from '@/components/EditDrawer';
 
 const nodeTypes = {
   custom: CustomNode,
 };
+
+const proOptions = { hideAttribution: true };
 
 
 const Canva = ({ data }: { data: any }) => {
@@ -39,12 +42,14 @@ const Canva = ({ data }: { data: any }) => {
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         fitView
-        className="bg-primary/10"
+        proOptions={proOptions}
+        className="bg-primary/20"
       >
         <Background variant={"dots" as BackgroundVariant} />
         {/* <Controls className='bg-gray-900'/> */}
         <Panel position="top-left">
           <div className='prose relative p-4 bg-white dark:bg-gray-800 shadow rounded-md'>
+            <div className='absolute right-1 bottom-1'><EditDrawer data={data} /></div>
             <Link className='absolute text-primary top-2 left-2 underline flex items-center gap-1 text-sm' href="/playground"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
             </svg>
@@ -53,7 +58,10 @@ const Canva = ({ data }: { data: any }) => {
             <h2 className='!mt-8 !mb-4 text-gray-900 dark:text-white'>
               {data.name}
             </h2>
-            <p className='text-gray-700 dark:text-gray-300'>{data.steps[step].description || data.description}</p>
+            {Array.isArray(data.steps[step].description) ?
+              <ul className='text-gray-700 dark:text-gray-300'>{data.steps[step].description.map((de: string) => <li>{de}</li>)}</ul>
+              :
+              <p className='text-gray-700 dark:text-gray-300'>{data.steps[step].description || data.description}</p>}
             <div className='absolute top-4 right-4'>
               <div>
                 <span className="isolate inline-flex rounded-md shadow-sm">
@@ -98,7 +106,7 @@ const Canva = ({ data }: { data: any }) => {
             </div>
             <div className='flex items-center max-w-32 overflow-hidden justify-between text-sm gap-1'>
               <ProgressBar progress={70} />
-              <p>Overload</p>
+              <p>Data volume</p>
             </div>
           </div>
         </Panel>

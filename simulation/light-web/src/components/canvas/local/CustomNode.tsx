@@ -5,9 +5,9 @@ import ServerIcon from '../../ServerIcon';
 import ClientIcon from '../../ClientIcon';
 import RouterIcon from '../../RouterIcon';
 import CacheIcon from '../../CacheIcon';
-import VideoPlayer from '../../VideoPlayer';
 import ProgessBar from '../ProgessBar';
 import DbIcon from '@/components/DbIcon';
+import InternetIcon from '@/components/InternetIcon';
 function CustomIcon({ type }: { type: string }) {
     let icon = null;
 
@@ -21,6 +21,9 @@ function CustomIcon({ type }: { type: string }) {
         case "client":
             icon = <ClientIcon />
             break;
+        case "internet":
+            icon = <InternetIcon />
+            break;
         default:
             icon = <ClientIcon />
     }
@@ -31,19 +34,19 @@ function CustomNode({ data }: { data: any }) {
     return (
         <div className='relative'>
             <div className="px-4 py-2 min-h-400 shadow-md rounded-md bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-400/20">
-                <div className="flex">
+                <div className="flex items-center">
                     <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
                         <CustomIcon type={data.icon} />
                     </div>
                     <div className="ml-2">
                         <div className="text-lg font-bold">{data.name}</div>
-                        <div className="text-gray-500">{data.ip}</div>
+                        {/* <div className="text-gray-500">{data.ip}</div> */}
                     </div>
                 </div>
                 <Handle type="target" position={Position.Left} className="h-8 !bg-primary" />
                 <Handle type="source" position={Position.Right} className="h-8 !bg-primary" />
                 {data.active && <div className='absolute inset-0 flex items-center justify-center'>
-                    <span className="animate-ping z-0 absolute inline-flex h-2/3 w-2/3 rounded-lg bg-sky-400/50"></span>
+                    <span className="animate-ping z-0 absolute inline-flex h-2/3 w-2/3 rounded-lg bg-primary/50"></span>
                 </div>
                 }
             </div>
@@ -70,9 +73,9 @@ function CustomNode({ data }: { data: any }) {
                 <div className='absolute top-4 right-4 -translate-y-full translate-x-full overflow-hidden shadow rounded-md border border-gray-400 bg-white'>
 
                 </div>}
-            <div className='absolute top-0 -translate-y-full left-0'>
-                <ProgessBar progress={data.overload || 0} />
-            </div>
+            {data.volume > 0 && <div className='absolute top-0 -translate-y-full left-0'>
+                <ProgessBar progress={data.volume || 0} />
+            </div>}
         </div>
     );
 }

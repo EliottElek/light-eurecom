@@ -1,3 +1,5 @@
+import { Button } from "./Button"
+
 const people = [
     {
         name: 'Petros Elia',
@@ -21,14 +23,17 @@ const people = [
 
 export default function Team() {
     return (
-        <div className="py-24 md:py-32">
+        <div id="contact" className="py-24 md:py-32">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-5">
-                <div className="max-w-2xl xl:col-span-2">
+                <div className="md:max-w-2xl xl:col-span-2">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">About the team</h2>
                     <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
                         We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
                         best results.
                     </p>
+                    <div className="mt-12 flex w-full md:text-left text-center">
+                        <Button href="mailto:Petros.Elia@eurecom.fr">Contact us</Button>
+                    </div>
                 </div>
                 <ul role="list" className="-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3">
                     {people.map((person) => (

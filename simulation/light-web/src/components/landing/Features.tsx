@@ -12,7 +12,7 @@ const features = [
             'No need to update your hardware'
         ],
         href: '#',
-        icon: <PaperAirplaneIcon className='text-white h-7 w-7 -rotate-45'/>,
+        icon: <PaperAirplaneIcon className='text-white h-7 w-7 -rotate-45' />,
     },
     {
         name: 'Content Delivery Networks (CDNs)',
@@ -20,7 +20,7 @@ const features = [
             'You have the network, you have the caches, you have the protocols...',
             'Just make your caches "smarter" to achieve up to 400% caching gains!'],
         href: '#',
-        icon: <LightBulbIcon className='text-white h-7 w-7 -rotate-45'/>,
+        icon: <LightBulbIcon className='text-white h-7 w-7 -rotate-45' />,
     },
     {
         name: 'Satellite Networks',
@@ -29,7 +29,7 @@ const features = [
             'Deliver content faster to VoD consumers or to terrestrial stations'
         ],
         href: '#',
-        icon: <GlobeAltIcon className='text-white h-7 w-7 -rotate-45'/>,
+        icon: <GlobeAltIcon className='text-white h-7 w-7 -rotate-45' />,
     },
 ]
 

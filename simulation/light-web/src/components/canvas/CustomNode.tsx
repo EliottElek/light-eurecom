@@ -37,7 +37,7 @@ function CustomNode({ data }: { data: any }) {
                     </div>
                     <div className="ml-2">
                         <div className="text-lg font-bold">{data.name}</div>
-                        <div className="text-gray-500">{data.ip}</div>
+                        {/* <div className="text-gray-500">{data.ip}</div> */}
                     </div>
                 </div>
                 <Handle type="target" position={Position.Left} className="h-8 !bg-primary" />
