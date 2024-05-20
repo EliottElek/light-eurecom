@@ -104,11 +104,12 @@ export function Hero() {
                 View demos
               </Button>
               <Button
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target='_blank'
+                href="https://docs.google.com/presentation/d/e/2PACX-1vTLiYcxMe6Msu2iA1UlYUzGeksZwxMBLKNKzm7hGZr2redgyY_njZdvHtJXgAyEPWP8cTOSzhbzGbCU/pub?start=false&loop=false&delayms=60000#slide=id.p"
                 variant="outline"
               >
                 <PlayIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2.5">Watch the video</span>
+                <span className="ml-2.5">Watch the slides</span>
               </Button>
             </div>
           </div>

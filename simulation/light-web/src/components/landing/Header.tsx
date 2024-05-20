@@ -1,5 +1,5 @@
 'use client'
-
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Popover } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -7,6 +7,7 @@ import { Button } from '@/components/landing/Button'
 import { Container } from '@/components/landing/Container'
 import { Logo } from '@/components/landing/Logo'
 import { NavLinks } from '@/components/landing/NavLinks'
+import clsx from 'clsx'
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -43,15 +44,28 @@ function MobileNavLink(
   return (
     <Popover.Button
       as={Link}
-      className="block text-base leading-7 tracking-tight text-gray-700"
+      className="block text-base leading-7 tracking-tight text-gray-700 dark:text-gray-300"
       {...props}
     />
   )
 }
 
 export function Header() {
+  const [scrolledFromTop, setScrolledFromTop] = useState(false);
+  useEffect(() => {
+    function onScroll() {
+      let currentPosition = window.pageYOffset;
+      if (scrolledFromTop === false && currentPosition > 80) {
+        setScrolledFromTop(true);
+      } else if (scrolledFromTop === true && currentPosition < 80) {
+        setScrolledFromTop(false);
+      }
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrolledFromTop]);
   return (
-    <header className='fixed top-0 right-0 left-0 border-b border-gray-300/20 backdrop-blur-sm bg-transparent z-50'>
+    <header className={clsx('fixed top-0 right-0 left-0 bg-transparent z-50', scrolledFromTop && "border-b border-gray-300/20 backdrop-blur-sm ")}>
       <nav>
         <Container className="relative flex justify-between py-4">
           <div className="relative z-10 flex items-center gap-16">
@@ -99,7 +113,7 @@ export function Header() {
                             y: -32,
                             transition: { duration: 0.2 },
                           }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
+                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 dark:bg-gray-900 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
                         >
                           <div className="space-y-4">
                             <MobileNavLink href="/#features">
