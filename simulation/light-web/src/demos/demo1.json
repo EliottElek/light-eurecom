@@ -1270,7 +1270,15 @@
             ]
         },
         {
-            "description": "vs. Traditional example (unicast; no coded caching). The edge servers requested 2 different files; each of them has a cache of 1 file size. Both edge servers store at the cache the same file (i.e., the most popular). Edge server 1 has the requested file in the cache; no request from the origin server. Edge server 2 does not have the requested file and requests it from the origin server. The origin server sents the requested file (100% of a file size) to the edge server 2.",
+            "description": [
+                "vs. Traditional example (unicast; no coded caching)",
+                "The edge servers requested 2 different files",
+                "Each of them has a cache of 1 file size",
+                "Both edge servers store at the cache the same file (i.e., the most popular)",
+                "Edge server 1 has the requested file in the cache",
+                "No request from the origin server. Edge server 2 does not have the requested file and requests it from the origin server",
+                "The origin server sents the requested file (100% of a file size) to the edge server 2"
+            ],
             "edges": [
                 {
                     "id": "e1-5",
