@@ -8,6 +8,7 @@ import CacheIcon from '../../CacheIcon';
 import ProgessBar from '../ProgessBar';
 import DbIcon from '@/components/DbIcon';
 import InternetIcon from '@/components/InternetIcon';
+import VideoPlayer from '@/components/VideoPlayer';
 function CustomIcon({ type }: { type: string }) {
     let icon = null;
 
@@ -70,8 +71,8 @@ function CustomNode({ data }: { data: any }) {
                 </div>
             }
             {data.video &&
-                <div className='absolute top-4 right-4 -translate-y-full translate-x-full overflow-hidden shadow rounded-md border border-gray-400 bg-white'>
-
+                <div className='absolute top-4 right-4 -translate-y-full translate-x-full overflow-hidden shadow rounded-md border border-gray-400 bg-white dark:bg-gray-900'>
+                    <VideoPlayer status={data.video.status} url={data.video.url} />
                 </div>}
             {data.volume > 0 && <div className='absolute top-0 -translate-y-full left-0'>
                 <ProgessBar progress={data.volume || 0} />

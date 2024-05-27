@@ -13,6 +13,6 @@
         "description": "In this example, we're performing a basic multicast flow between two receivers. This simply demonstrates that two receivers, subscribed to a multicast server, receive the same packets.",
         "image": "/2.png",
         "slug": "/playground/demo/2",
-        "active": false
+        "active": true
     }
 ]

@@ -51,6 +51,16 @@ export async function getLocalDemo(demo_id: string): Promise<LocalDemo | null> {
     return null
   }
 }
+export async function getHomeDemo(): Promise<LocalDemo | null> {
+  try {
+    const file = await fs.readFile(DEMOS_PATH + `home.json`, 'utf8');
+    const data = JSON.parse(file);
+    return data as LocalDemo
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}
 
 export async function getDemo(demo_id: string) {
   try {

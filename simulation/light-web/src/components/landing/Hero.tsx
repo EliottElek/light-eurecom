@@ -92,7 +92,7 @@ export function Hero() {
       <Container>
         <div className="text-center max-w-4xl mx-auto">
           <div className="relative z-10 mx-auto lg:col-span-7 xl:col-span-6">
-            <h1 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl font-bold tracking-tight dark:text-white text-gray-900">
+            <h1 className="xl:text-6xl lg:text-5xl text-4xl font-bold tracking-tight dark:text-white text-gray-900">
               <span className='text-primary'>Redefining</span> Video on Demand (VoD) in Wireless and Wired Networks</h1>
             <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
               Cache-aided multicasting for Reducing VoD Loads in Networks.
