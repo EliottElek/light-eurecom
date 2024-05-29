@@ -100,7 +100,8 @@
                         },
                         "active": false,
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ]
                     },
                     "position": {
@@ -123,7 +124,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ]
                     },
                     "position": {
@@ -245,7 +247,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": true
                     },
@@ -267,7 +270,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "volume": 0,
                         "active": true
@@ -386,13 +390,14 @@
                         "ip": "127.0.0.2",
                         "icon": "client",
                         "volume": 0,
-                        "message": "Requesting server quote 'All you need is love.'",
+                        "message": "Requesting server video1.mp4",
                         "video": {
                             "status": "loading",
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": true
                     },
@@ -409,14 +414,15 @@
                         "ip": "127.0.0.3",
                         "icon": "client",
                         "volume": 0,
-                        "message": "Requesting server quote 'I think, therefore I am.'",
+                        "message": "Requesting server video2.mp4",
                         "active": true,
                         "video": {
                             "status": "loading",
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ]
                     },
                     "position": {
@@ -536,7 +542,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": false
                     },
@@ -557,7 +564,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "volume": 0,
                         "active": false
@@ -684,7 +692,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": false
                     },
@@ -705,7 +714,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "message": "",
                         "volume": 0,
@@ -830,7 +840,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": false
                     },
@@ -851,7 +862,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "message": "",
                         "volume": 0,
@@ -976,7 +988,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": true
                     },
@@ -997,7 +1010,8 @@
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "message": "",
                         "volume": 50,
@@ -1115,13 +1129,14 @@
                         "ip": "127.0.0.2",
                         "icon": "client",
                         "volume": 50,
-                        "message": "Decoded message: 'I think, therefore I am.'",
+                        "message": "Decoded message: 'video1.mp4",
                         "video": {
                             "status": "loading",
                             "url": null
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": true
                     },
@@ -1137,13 +1152,14 @@
                         "name": "Edge server 2",
                         "ip": "127.0.0.3",
                         "icon": "client",
-                        "message": "Decoded message: 'All you need is love.'",
+                        "message": "Decoded message: video2.mp4",
                         "video": {
                             "status": "loading",
                             "url": null
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "volume": 50,
                         "active": true
@@ -1267,13 +1283,14 @@
                         "ip": "127.0.0.2",
                         "icon": "client",
                         "volume": 50,
-                        "message": "Decoded message: 'I think, therefore I am.'",
+                        "message": "Decoded message: video1.mp4",
                         "video": {
-                            "status": "loading",
+                            "status": "playing",
                             "url": "https://www.youtube.com/watch?v=YPo151B2iyE"
                         },
                         "cache": [
-                            "**half of video1.mp4**"
+                            "video1_V1",
+                            "video2_V1"
                         ],
                         "active": false
                     },
@@ -1289,13 +1306,14 @@
                         "name": "Edge server 2",
                         "ip": "127.0.0.3",
                         "icon": "client",
-                        "message": "Decoded message: 'All you need is love.'",
+                        "message": "Decoded message: video2.mp4",
                         "video": {
-                            "status": "loading",
-                            "url": "https://www.youtube.com/watch?v=YPo151B2iyE"
+                            "status": "playing",
+                            "url": "https://www.youtube.com/watch?v=xaGsccCP9qk"
                         },
                         "cache": [
-                            "**half of video2.mp4**"
+                            "video1_V2",
+                            "video2_V2"
                         ],
                         "volume": 50,
                         "active": false
