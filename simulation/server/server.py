@@ -4,10 +4,13 @@ import pathlib
 import subprocess
 import uuid
 from flask import Flask, jsonify, send_file, abort
+from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
+socketio = SocketIO(app,debug=True,cors_allowed_origins='*',async_mode='eventlet')
+
 
 @app.route('/demos')
 def get_demos():
@@ -131,5 +134,15 @@ def get_video(filename):
     else:
         # Return a 404 error if the file doesn't exist
         abort(404)
+
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+    
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+    
+    
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(debug=True)

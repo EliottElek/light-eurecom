@@ -1,0 +1,6 @@
+chunk1-1:so_s
+chunk1-2:erio
+chunk2-1:so_p
+chunk2-2:erfe
+chunk3-1:is_m
+chunk3-2:inim
