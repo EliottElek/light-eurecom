@@ -1,102 +1,27 @@
 # Multicast with Python
 
-Here is a simple multicast implementation with python. 
-You can test it two ways, with or without docker.
+Here is a simple multicast implementation with python, using the xor operation to send the same packets to two different receivers, but in the end interpreting two different videos.
 
 ## Without docker
 
-This impies you have `python3` installed on your machine.
+This implies you have `python3` installed on your machine.
+make sure you are in `/multicast-video-xor` folder.
 
 Start by opening 3 terminals.
 
-1. Terminal 1 (server)
+
+1. Terminal 1 (receiver 1)
+```
+cd receiver1 && python3 receiver.py
+```
+2. Terminal 2 (receiver 2)
+```
+cd receiver2 && python3 receiver.py
+```
+
+Make sure you have receiver 1 and 2 started and waiting before launching the server, as the server will not wait for them to connect and send the packets as soon as it's up.
+
+3. Terminal 3 (server)
 ```
 cd sender && python3 sender.py
 ```
-1. Terminal 2 (receiver 1)
-```
-cd receiver && python3 receiver.py
-```
-1. Terminal 3 (receiver 2)
-```
-cd receiver && python3 receiver.py
-```
-
-## With docker 
-
-This implies that you have `docker` installed on your machine. 
-
-
-### Start the multicast server
-
-Start by building the image of the server.
-```
-cd sender
-docker build -t multicast-sender .
-```
-then start the container:
-
-```
-docker run --name my-multicast-sender multicast-sender
-```
-
-### Start the receivers
-
-We'll use two receivers for the moment.
-Start by building the image of the receiver.
-```
-cd receiver
-docker build -t multicast-receiver .
-```
-then start the two containers:
-
-```
-docker run --name my-multicast-receiver-1 multicast-receiver
-docker run --name my-multicast-receiver-2 multicast-receiver
-# Two separate terminals
-```
-
-Make sure all your containers are running, using `docker ps`:
-
-```
-eliottmorcillo@MacBook-Pro-de-Eliott ~/D/E/m/receiver (main)> docker ps
-CONTAINER ID   IMAGE                COMMAND                 CREATED              STATUS              PORTS     NAMES
-c3730874a1cd   multicast-receiver   "python3 receiver.py"   About a minute ago   Up About a minute             my-multicast-receiver-2
-3788216bfb98   multicast-receiver   "python3 receiver.py"   About a minute ago   Up About a minute             my-multicast-receiver-1
-1268c4dd699c   multicast-sender     "python3 sender.py"     About a minute ago   Up About a minute             my-multicast-sender
-```
-### Start the multicast
-
-Open three terminal, and access the containers via ssh. Run:
-
-1. Terminal 1 (server)
-```
-docker exec -it my-multicast-sender  /bin/bash
-```
-then:
-```bash
-python3 sender.py
-```
-
-2. Terminal 2 (receiver 1)
-```
-docker exec -it my-multicast-receiver-1  /bin/bash
-```
-then:
-```bash
-python3 receiver.py
-```
-
-3. Terminal 3 (receiver 2)
-```
-docker exec -it my-multicast-receiver-2  /bin/bash
-```
-then:
-```bash
-python3 receiver.py
-```
-
-You should get something like:
-
-![image](https://github.com/EliottElek/multicast/assets/64375473/c9559051-8c97-435b-85b4-3705caf81a44)
-

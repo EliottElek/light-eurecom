@@ -23,6 +23,8 @@ def send_multicast():
         for chunk in coded_chunks_2048:
             multicast_socket.sendto(chunk, (MULTICAST_GROUP, MULTICAST_PORT))
             print("Sent chunk of size:", len(chunk))
+            time.sleep(.05)
+
 
         # Send the last packet indicator
         multicast_socket.sendto(b'LAST_PACKET', (MULTICAST_GROUP, MULTICAST_PORT))
