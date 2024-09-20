@@ -9,7 +9,7 @@ import { HeroDemo } from '@/components/landing/HeroDemo'
 import { SecondaryFeatures } from '@/components/landing/SecondaryFeatures'
 import Team from '@/components/landing/Team'
 
-export default async function Home() {
+export default function Home() {
 
   return (
     <>

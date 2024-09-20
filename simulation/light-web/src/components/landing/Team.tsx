@@ -26,8 +26,8 @@ export default function Team() {
         <div id="contact" className="py-24 md:py-32">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-5">
                 <div className="md:max-w-2xl xl:col-span-2">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">About the team</h2>
-                    <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">About the team</h2>
+                    <p className="mt-6 text-lg leading-8">
                         We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
                         best results.
                     </p>
@@ -40,10 +40,10 @@ export default function Team() {
                         <li key={person.name} className="flex flex-col gap-10 pt-12 sm:flex-row">
                             <img className="aspect-[3/4] w-52 h-72 flex-none rounded-2xl object-cover" src={person.imageUrl} alt="" />
                             <div className="max-w-xl flex-auto">
-                                <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900 dark:text-white">{person.name}</h3>
-                                <p className="text-base leading-7 font-normal text-gray-700 dark:text-gray-400">{person.role}</p>
-                                <p className="mt-6 text-base leading-7 text-gray-500 dark:text-gray-300">{person.bio}</p>
-                                <div className="mt-6 text-base leading-7 text-gray-500 dark:text-gray-300">
+                                <h3 className="text-lg font-semibold leading-8 tracking-tight">{person.name}</h3>
+                                <p className="text-base leading-7 font-normal ">{person.role}</p>
+                                <p className="mt-6 text-base leading-7 opacity-75">{person.bio}</p>
+                                <div className="mt-6 text-base leading-7 opacity-75">
                                     <ul className="not-prose italic">
                                         {person.themes.map((theme: string) => <li>
                                             {theme}
@@ -51,16 +51,8 @@ export default function Team() {
                                     </ul>
                                 </div>
                                 <ul role="list" className="mt-6 flex gap-x-6">
-                                    {/* <li>
-                                        <a href={person.eurecomUrl} className="text-gray-400 hover:text-gray-500">
-                                            <span className="sr-only">X</span>
-                                            <svg className="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M11.4678 8.77491L17.2961 2H15.915L10.8543 7.88256L6.81232 2H2.15039L8.26263 10.8955L2.15039 18H3.53159L8.87581 11.7878L13.1444 18H17.8063L11.4675 8.77491H11.4678ZM9.57608 10.9738L8.95678 10.0881L4.02925 3.03974H6.15068L10.1273 8.72795L10.7466 9.61374L15.9156 17.0075H13.7942L9.57608 10.9742V10.9738Z" />
-                                            </svg>
-                                        </a>
-                                    </li> */}
                                     <li>
-                                        <a href={person.linkedinUrl} className="text-gray-400 hover:text-gray-500">
+                                        <a href={person.linkedinUrl} className="opacity-75">
                                             <span className="sr-only">LinkedIn</span>
                                             <svg className="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                                 <path

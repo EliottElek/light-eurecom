@@ -1,34 +1,17 @@
-import Image from 'next/image'
-import Link from 'next/link'
-
-import { Button } from '@/components/landing/Button'
 import { Container } from '@/components/landing/Container'
-import { TextField } from '@/components/landing/Fields'
 import { Logomark } from '@/components/landing/Logo'
 import { NavLinks } from '@/components/landing/NavLinks'
-import qrCode from '@/images/qr-code.svg'
-import ThemeSwitcher from '../ThemeSwitcher'
+import { ModeToggle } from '../ThemeSwitcher'
 
-function QrCodeBorder(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M1 17V9a8 8 0 0 1 8-8h8M95 17V9a8 8 0 0 0-8-8h-8M1 79v8a8 8 0 0 0 8 8h8M95 79v8a8 8 0 0 1-8 8h-8"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  )
-}
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 dark:border-gray-400/20">
+    <footer className="border-t ">
       <Container>
         <div className="flex flex-col items-start justify-between gap-y-12 pb-6 pt-16 lg:flex-row lg:items-center lg:py-16">
           <div>
-            <div className="flex items-center text-gray-900 dark:text-white">
-              <Logomark className="h-10 w-10 flex-none fill-primary" />
+            <div className="flex items-center">
+              <Logomark />
               <div className="ml-4">
                 <p className="text-base font-semibold">Light VOD</p>
                 <p className="mt-1 text-sm">Cache-aided multicasting for Reducing VoD Loads in Networks.</p>
@@ -38,43 +21,12 @@ export function Footer() {
               <NavLinks />
             </nav>
           </div>
-          {/* <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
-            <div className="relative flex h-24 w-24 flex-none items-center justify-center">
-              <QrCodeBorder className="absolute inset-0 h-full w-full stroke-gray-300 transition-colors group-hover:stroke-primary" />
-              <Image src={qrCode} alt="" unoptimized />
-            </div>
-            <div className="ml-8 lg:w-64">
-              <p className="text-base font-semibold text-gray-900">
-                <Link href="#">
-                  <span className="absolute inset-0 sm:rounded-2xl" />
-                  Download the app
-                </Link>
-              </p>
-              <p className="mt-1 text-sm text-gray-700">
-                Scan the QR code to download the app from the App Store.
-              </p>
-            </div>
-          </div> */}
         </div>
-        <div className="flex flex-col items-center border-t border-gray-200 dark:border-gray-400/20 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
-          {/* <form className="flex w-full justify-center md:w-auto">
-            <TextField
-              type="email"
-              aria-label="Email address"
-              placeholder="Email address"
-              autoComplete="email"
-              required
-              className="w-60 min-w-0 shrink"
-            />
-            <Button type="submit" color="teal" className="ml-4 flex-none">
-              <span className="hidden lg:inline">Join our newsletter</span>
-              <span className="lg:hidden">Join newsletter</span>
-            </Button>
-          </form> */}
+        <div className="flex flex-col items-center border-t pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
           <div>
-            <ThemeSwitcher />
+            <ModeToggle />
           </div>
-          <p className="mt-6 text-sm text-gray-500 dark:text-gray-300 md:mt-0">
+          <p className="mt-6 text-sm opacity-75 md:mt-0">
             &copy; Copyright {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>

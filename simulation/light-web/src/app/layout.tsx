@@ -1,15 +1,10 @@
-import { Inter } from 'next/font/google'
-import clsx from 'clsx'
 import { Providers } from './providers'
 import '@/styles/tailwind.css'
 import { type Metadata } from 'next'
-import { Toaster } from 'react-hot-toast'
+import { ThemeProvider } from "@/components/theme-provider"
+import Loader from '@/components/Loader'
+import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -28,11 +23,19 @@ export default function RootLayout({
   return (
 
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx('bg-gray-50 dark:bg-slate-900')}>
+      <body>
         <Providers>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
           <Toaster />
         </Providers>
+        <Loader />
       </body>
     </html>
   )

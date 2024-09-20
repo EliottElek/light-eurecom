@@ -1,0 +1,203 @@
+{
+    "name": "Basic example",
+    "description": "In this example, we're performing a basic multicast flow between two Edge servers. This simply demonstrates that two Edge servers, subscribed to a multicast server, receive the same packets.",
+    "edges": [
+        {
+            "id": "e1-5",
+            "source": "1",
+            "target": "5",
+            "animated": false,
+            "style": {
+                "strokeWidth": 3
+            }
+        },
+        {
+            "id": "e5-2",
+            "source": "5",
+            "target": "2",
+            "animated": false,
+            "style": {
+                "strokeWidth": 3
+            },
+            "label": null
+        },
+        {
+            "id": "e2-3",
+            "source": "2",
+            "target": "3",
+            "animated": false,
+            "style": {
+                "strokeWidth": 3
+            },
+            "label": null
+        },
+        {
+            "id": "e2-4",
+            "source": "2",
+            "target": "4",
+            "animated": false,
+            "style": {
+                "strokeWidth": 3
+            },
+            "label": null
+        }
+    ],
+    "nodes": [
+        {
+            "id": "1",
+            "type": "custom",
+            "data": {
+                "name": "Origin server",
+                "id": "demo_origin_server",
+                "ip": "127.0.0.1",
+                "icon": "server",
+                "message": "",
+                "storage": [
+                    "To infinity and beyond!",
+                    "I think, therefore I am.",
+                    "All you need is love.",
+                    "Seize the day.",
+                    "Life is short, eat dessert first."
+                ],
+                "volume": 0,
+                "active": true
+            },
+            "position": {
+                "x": -600,
+                "y": 150
+            }
+        },
+        {
+            "id": "2",
+            "type": "custom",
+            "data": {
+                "name": "Router (multicasting)",
+                "id": "demo_router_multicasting",
+                "ip": "224.0.0.1",
+                "icon": "router",
+                "message": "",
+                "volume": 0,
+                "active": false
+            },
+            "position": {
+                "x": -75,
+                "y": 150
+            }
+        },
+        {
+            "id": "3",
+            "type": "custom",
+            "data": {
+                "name": "Edge server 1",
+                "id": "demo_edge_server_1",
+                "ip": "127.0.0.2",
+                "icon": "client",
+                "volume": 0,
+                "message": "",
+                "active": false,
+                "cache": [
+                    "I think, there",
+                    "All you ne"
+                ]
+            },
+            "position": {
+                "x": 330,
+                "y": 0
+            }
+        },
+        {
+            "id": "4",
+            "type": "custom",
+            "data": {
+                "name": "Edge server 2",
+                "id": "demo_edge_server_2",
+                "ip": "127.0.0.3",
+                "icon": "client",
+                "message": "",
+                "volume": 0,
+                "active": false,
+                "cache": [
+                    " fore I am.",
+                    "ed is love."
+                ]
+            },
+            "position": {
+                "x": 330,
+                "y": 310
+            }
+        },
+        {
+            "id": "5",
+            "type": "custom",
+            "data": {
+                "name": "Internet",
+                "ip": "127.0.0.3",
+                "icon": "internet",
+                "message": "",
+                "volume": 0,
+                "active": false
+            },
+            "position": {
+                "x": -300,
+                "y": 150
+            }
+        }
+    ],
+    "steps": [
+        {
+            "content": "Basic example: An origin server stores in its DB and serves a catalog of files (here: files correspond to well known quotes).",
+            "target": ".demo_origin_server",
+            "disableBeacon": true
+        },
+        {
+            "content": "The edge servers have a cache with storage capacity of 1 file. However, they do not store 1 entire file, but they store 2 parts of 2 files (different parts at each edge server).",
+            "target": ".demo_router_multicasting"
+        },
+        {
+            "content": "Edge servers 1 and 2 request different files: 'All you need is love.' and 'I think, therefore I am.' respectively.",
+            "target": ".demo_router_multicasting"
+        },
+        {
+            "content": "The origin server receives the requests and proceeds with the response process.",
+            "target": ".demo_origin_server"
+        },
+        {
+            "content": "The origin server combines the 2nd part of the 1st file and the 1st part of the 2nd file, and sends the coded message; in total, it sends a message of size 50% of a file.",
+            "target": ".demo_origin_server"
+        },
+        {
+            "content": "The origin server sends the coded message (50% of file size) to the edge servers as a single file. The multicast router multicasts the message to the edge servers.",
+            "target": ".demo_router_multicasting"
+        },
+        {
+            "content": "The edge servers receive the same message and proceed with the decoding of the content using their respective cache.",
+            "target": ".demo_edge_server"
+        },
+        {
+            "content": "The edge servers receive the same message and proceed with the decoding of the content using their respective cache.",
+            "target": ".demo_edge_server"
+        },
+        {
+            "content": [
+                "The edge servers requested 2 different files; each of them has a cache of 1 file size.",
+                "The origin server sent 50% of a file over the Internet.",
+                "The router multicast the message (50% of file size) to both edge servers",
+                "The edge servers can decode the entire file",
+                "Without cache-aided multicast, the origin server would have to send 100% of a file (at least)."
+            ],
+            "target": ".demo_router_multicasting"
+        },
+        {
+            "content": [
+                "vs. Traditional example (unicast; no coded caching)",
+                "The edge servers requested 2 different files",
+                "Each of them has a cache of 1 file size",
+                "Both edge servers store at the cache the same file (i.e., the most popular)",
+                "Edge server 1 has the requested file in the cache",
+                "No request from the origin server. Edge server 2 does not have the requested file and requests it from the origin server",
+                "The origin server sents the requested file (100% of a file size) to the edge server 2"
+            ],
+            "target": ".demo_edge_server"
+        }
+    ]
+}

@@ -1,8 +1,7 @@
-import { Button } from '@/components/landing/Button'
+import { Button } from '@/components/ui/button'
 import { Container } from '@/components/landing/Container'
-import { PhoneFrame } from './PhoneFrame'
-import { AppDemo } from './AppDemo'
 import { useId } from 'react'
+import Link from 'next/link'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -88,29 +87,32 @@ function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Hero() {
   return (
-    <div className="overflow-hidden border-b border-gray-200 dark:border-gray-400/20 h-screen min-h-[600px] flex items-center">
+    <div className="overflow-hidden border-b  h-screen min-h-[600px] flex items-center">
       <Container>
         <div className="text-center max-w-4xl mx-auto">
           <div className="relative z-10 mx-auto lg:col-span-7 xl:col-span-6">
-            <h1 className="xl:text-6xl lg:text-5xl text-4xl font-bold tracking-tight dark:text-white text-gray-900">
+            <h1 className="xl:text-6xl lg:text-5xl text-4xl font-bold tracking-tight">
               <span className='text-primary'>Redefining</span> Video on Demand (VoD) in Wireless and Wired Networks</h1>
-            <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-lg opacity-75">
               Cache-aided multicasting for Reducing VoD Loads in Networks.
             </p>
             <div className="mt-16 flex justify-center flex-wrap gap-x-6 gap-y-4">
-              <Button
-                href='/playground'
+              <Link href='/playground'
               >
-                View demos
-              </Button>
-              <Button
-                target='_blank'
-                href="https://docs.google.com/presentation/d/e/2PACX-1vTLiYcxMe6Msu2iA1UlYUzGeksZwxMBLKNKzm7hGZr2redgyY_njZdvHtJXgAyEPWP8cTOSzhbzGbCU/pub?start=false&loop=false&delayms=60000#slide=id.p"
-                variant="outline"
-              >
-                <PlayIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2.5">Watch the slides</span>
-              </Button>
+                <Button
+                >
+                  View demos
+                </Button>
+              </Link>
+              <a target='_blank'
+                href="https://docs.google.com/presentation/d/e/2PACX-1vTLiYcxMe6Msu2iA1UlYUzGeksZwxMBLKNKzm7hGZr2redgyY_njZdvHtJXgAyEPWP8cTOSzhbzGbCU/pub?start=false&loop=false&delayms=60000#slide=id.p">
+                <Button
+                  variant="outline"
+                >
+                  <PlayIcon className="h-6 w-6 flex-none" />
+                  <span className="ml-2.5">Watch the slides</span>
+                </Button>
+              </a>
             </div>
           </div>
           {/* <div className="relative mt-10 sm:mt-10 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">

@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import ReactFlow, { useNodesState, useEdgesState, addEdge, MiniMap, Controls, Connection, Edge, Panel, Background, BackgroundVariant, useStoreApi, useReactFlow, ReactFlowProvider } from 'reactflow';
 import CustomNode from './CustomNode';
 import 'reactflow/dist/style.css';
-import Link from 'next/link';
 import CacheIcon from '@/components/CacheIcon';
 import DbIcon from '@/components/DbIcon';
 import ProgressBar from '../ProgessBar';
@@ -43,11 +42,18 @@ const Canva = ({ data }: { data: any }) => {
     focusNode()
   }, [nodes])
   return (
-    <div className='relative py-8 mt-3 rounded-lg border-gray-200 dark:border-gray-400/20' style={{ width: '100%', height: '600px' }}>
+    <div className='relative py-8 mt-3 rounded-lg ' style={{ width: '100%', height: '600px' }}>
       <ReactFlow
-        panOnDrag={false}
         nodes={nodes}
         edges={edges}
+        edgesUpdatable={false}
+        edgesFocusable={false}
+        nodesDraggable={false}
+        nodesConnectable={false}
+        nodesFocusable={false}
+        draggable={false}
+        panOnDrag={false}
+        elementsSelectable={false}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
@@ -65,7 +71,7 @@ const Canva = ({ data }: { data: any }) => {
       >
         {/* <Background variant={"dots" as BackgroundVariant} /> */}
         <Panel position="top-center">
-          <div className='p-4 max-w-2xl flex flex-col gap-2 bg-white dark:bg-gray-800 shadow rounded-md'>
+          <div className='p-4 max-w-2xl flex flex-col gap-2 shadow rounded-md'>
             <h2 className='mb-3 italic underline text-sm'>
               Legends:
             </h2>

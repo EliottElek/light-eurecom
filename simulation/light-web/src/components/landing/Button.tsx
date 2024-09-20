@@ -16,7 +16,7 @@ const variantStyles = {
     gray: 'bg-gray-800 dark:bg-primary text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80',
   },
   outline: {
-    gray: 'border-gray-300 dark:border-gray-300/30 text-gray-700 dark:text-gray-300 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80',
+    gray: 'active:/80',
   },
 }
 

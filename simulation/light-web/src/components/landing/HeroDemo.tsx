@@ -43,7 +43,7 @@ export function HeroDemo() {
                   key={period}
                   value={period}
                   className={clsx(
-                    'cursor-pointer border border-gray-200 dark:border-gray-400/20 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm outline-2 outline-offset-2 transition-colors text-center hover:border-gray-400',
+                    'cursor-pointer border px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm outline-2 outline-offset-2 transition-colors text-center hover:border-gray-400',
                     period === 'With'
                       ? 'rounded-l-lg'
                       : '-ml-px rounded-r-lg',

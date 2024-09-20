@@ -30,11 +30,11 @@ export async function getDemos(): Promise<Demo[] | null> {
   }
 }
 
-export async function getLocalDemos(): Promise<LocalDemo[] | null> {
+export async function getLocalDemos(): Promise<any[] | null> {
   try {
     const file = await fs.readFile(DEMOS_PATH + "manifest.json", 'utf8');
     const data = JSON.parse(file);
-    return data as LocalDemo[]
+    return data as any[]
   } catch (e) {
     console.log(e)
     return null
