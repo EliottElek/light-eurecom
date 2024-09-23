@@ -9,11 +9,11 @@
         },
         {
             "content": "The edge servers have a cache with storage capacity of 1 file. However, they do not store 1 entire file, but they store 2 parts of 2 files (different parts at each edge server).",
-            "target": ".demo_router_multicasting"
+            "target": ".demo_edge_server_1"
         },
         {
             "content": "Edge servers 1 and 2 request different files: 'All you need is love.' and 'I think, therefore I am.' respectively.",
-            "target": ".demo_router_multicasting"
+            "target": ".demo_edge_server_2"
         },
         {
             "content": "The origin server receives the requests and proceeds with the response process.",
@@ -25,37 +25,27 @@
         },
         {
             "content": "The origin server sends the coded message (50% of file size) to the edge servers as a single file. The multicast router multicasts the message to the edge servers.",
-            "target": ".demo_router_multicasting"
+            "target": ".demo_origin_server"
         },
         {
             "content": "The edge servers receive the same message and proceed with the decoding of the content using their respective cache.",
-            "target": ".demo_edge_server"
+            "target": ".demo_edge_server_1"
         },
         {
             "content": "The edge servers receive the same message and proceed with the decoding of the content using their respective cache.",
-            "target": ".demo_edge_server"
+            "target": ".demo_edge_server_2"
         },
         {
             "content": [
-                "The edge servers requested 2 different files; each of them has a cache of 1 file size.",
-                "The origin server sent 50% of a file over the Internet.",
-                "The router multicast the message (50% of file size) to both edge servers",
-                "The edge servers can decode the entire file",
-                "Without cache-aided multicast, the origin server would have to send 100% of a file (at least)."
+                "The edge servers requested 2 different files; each of them has a cache of 1 file size.\nThe origin server sent 50% of a file over the Internet.\nThe router multicast the message (50% of file size) to both edge servers\nThe edge servers can decode the entire file\nWithout cache-aided multicast, the origin server would have to send 100% of a file (at least)."
             ],
-            "target": ".demo_router_multicasting"
+            "target": ".demo_origin_server"
         },
         {
             "content": [
-                "vs. Traditional example (unicast; no coded caching)",
-                "The edge servers requested 2 different files",
-                "Each of them has a cache of 1 file size",
-                "Both edge servers store at the cache the same file (i.e., the most popular)",
-                "Edge server 1 has the requested file in the cache",
-                "No request from the origin server. Edge server 2 does not have the requested file and requests it from the origin server",
-                "The origin server sents the requested file (100% of a file size) to the edge server 2"
+                "vs. Traditional example (unicast; no coded caching)\nThe edge servers requested 2 different files\nEach of them has a cache of 1 file size\nBoth edge servers store at the cache the same file (i.e., the most popular)\nEdge server 1 has the requested file in the cache\nNo request from the origin server. Edge server 2 does not have the requested file and requests it from the origin server\nThe origin server sents the requested file (100% of a file size) to the edge server 2\n"
             ],
-            "target": ".demo_edge_server"
+            "target": ".demo_origin_server"
         }
     ],
     "schema_steps": [
@@ -132,6 +122,7 @@
                     "type": "custom",
                     "data": {
                         "name": "Router (multicasting)",
+                        "id": "demo_router",
                         "ip": "224.0.0.1",
                         "icon": "router",
                         "message": "",
@@ -150,6 +141,7 @@
                         "name": "Edge server 1",
                         "ip": "127.0.0.2",
                         "icon": "client",
+                        "id": "demo_edge_server_1",
                         "volume": 0,
                         "message": "",
                         "active": false,
@@ -169,6 +161,7 @@
                     "data": {
                         "name": "Edge server 2",
                         "ip": "127.0.0.3",
+                        "id": "demo_edge_server_2",
                         "icon": "client",
                         "message": "",
                         "volume": 0,

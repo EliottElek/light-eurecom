@@ -33,7 +33,6 @@ function CustomIcon({ type }: { type: string }) {
 }
 
 function CustomNode({ data }: { data: any }) {
-    console.log(data)
     return (
         <div className={clsx('relative', data.id)}>
             <div className="px-4 py-2">

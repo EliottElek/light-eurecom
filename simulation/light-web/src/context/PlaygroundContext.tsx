@@ -54,11 +54,6 @@ export function PlaygroundProvider({ children }: { children: ReactNode }) {
                 }
             } catch (error) {
                 setServerUp(false);
-                toast({
-                    title: "Server seems down",
-                    variant: "destructive",
-                    description: "The server running the simulations seems down. You can still view local demo.",
-                })
             }
         };
         checkServerStatus();

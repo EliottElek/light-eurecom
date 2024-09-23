@@ -34,29 +34,9 @@ const Canva = ({ data }: { data: any }) => {
   }, [data.schema_steps]);
 
 
-  const handleJoyrideCallback = (data: CallBackProps) => {
-    const { action, index, origin, status, type } = data;
-
-    if (action === ACTIONS.CLOSE && origin === ORIGIN.KEYBOARD) {
-      // do something
-    }
-
-    if ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND].includes(type as any)) {
-      // Update state to advance the tour
-      setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
-    } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status as any)) {
-      console.log("finished")
-    }
-    console.groupCollapsed(type);
-    console.groupEnd();
-  };
-
-
   return (
     <div className='relative' style={{ width: '100%', height: '100%' }}>
       <Joyride
-        callback={handleJoyrideCallback}
-        stepIndex={stepIndex}
         steps={data.steps}
         showProgress
         styles={{

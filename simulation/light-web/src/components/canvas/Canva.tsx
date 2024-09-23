@@ -28,6 +28,8 @@ const Canva = ({ data, steps }: { data: any, steps: any }) => {
     setEdges(data.edges);
   }, [data.nodes, data.edges]);
 
+  console.log(steps)
+
   return (
     <div className='relative' style={{ width: '100%', height: '100%' }}>
       <Joyride
