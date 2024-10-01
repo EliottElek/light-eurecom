@@ -37,7 +37,7 @@ import { ModeToggle } from "../ThemeSwitcher"
 export function PresetActions() {
   const [open, setIsOpen] = React.useState(false)
   const [showDeleteDialog, setShowDeleteDialog] = React.useState(false)
-  const { setShowLegend, showLegend, setShowTitle, showTitle } = usePlayground()
+  const { setShowLegend, showLegend, setShowTitle, showTitle, setShowMinimap, showMinimap } = usePlayground()
   const { toast } = useToast()
 
 
@@ -56,6 +56,7 @@ export function PresetActions() {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
+            disabled
             onSelect={() => setShowDeleteDialog(true)}
             className="text-red-600 cursor-pointer"
           >
@@ -99,6 +100,22 @@ export function PresetActions() {
                 </span>
                 <span className="text-sm text-muted-foreground">
                   Shows you the main components of the simulation.
+                </span>
+              </Label>
+            </div>
+          </div>
+          <div className="py-4">
+            <h4 className="text-sm text-muted-foreground">
+              Minimap
+            </h4>
+            <div className="flex items-start justify-start space-x-4 pt-3">
+              <Switch name="show" id="show" defaultChecked={showMinimap} onCheckedChange={setShowMinimap} />
+              <Label className="grid gap-1 font-normal" htmlFor="show">
+                <span className="font-semibold">
+                  Show minimap on the playground
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  Shows you the minimap of the components of the simulation.
                 </span>
               </Label>
             </div>

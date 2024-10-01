@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/popover"
 
 import { Model, ModelType } from "./data/models"
-import { usePlayground } from "@/context/PlaygroundContext"
+import { useServerStatus } from "@/context/ServerStatusContext"
 
 interface ModelSelectorProps extends PopoverProps {
   types: readonly ModelType[]
@@ -39,7 +39,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
   const [open, setOpen] = React.useState(false)
   const [selectedModel, setSelectedModel] = React.useState<Model>(models[0])
   const [peekedModel, setPeekedModel] = React.useState<Model>(models[0])
-  const { serverUp } = usePlayground()
+  const { serverUp } = useServerStatus()
 
   return (
     <div className="grid gap-2">

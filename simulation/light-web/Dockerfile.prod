@@ -1,0 +1,23 @@
+FROM node:20.11.1
+
+RUN groupadd -r www && useradd -r -g www www
+
+WORKDIR /app
+
+COPY yarn.lock package*.json ./
+
+RUN yarn install
+
+COPY . .
+
+RUN chown -R www:www /app
+
+USER www
+
+ENV YARN_CACHE_FOLDER=/app/.cache/yarn
+
+RUN yarn build
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]

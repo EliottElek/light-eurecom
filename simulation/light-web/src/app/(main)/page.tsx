@@ -10,7 +10,6 @@ import { SecondaryFeatures } from '@/components/landing/SecondaryFeatures'
 import Team from '@/components/landing/Team'
 
 export default function Home() {
-
   return (
     <>
       <HeroPattern />

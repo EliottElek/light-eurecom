@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { usePlayground } from "@/context/PlaygroundContext"
 import clsx from "clsx"
+import { useServerStatus } from "@/context/ServerStatusContext"
 
 interface ClientsSelectorProps {
   defaultValue: SliderProps["defaultValue"]
@@ -14,7 +15,8 @@ interface ClientsSelectorProps {
 
 export function ClientsSelector({ defaultValue }: ClientsSelectorProps) {
   // Access the clients value and setter from the PlaygroundContext
-  const { clients, setClients, serverUp } = usePlayground()
+  const { clients, setClients } = usePlayground()
+  const { serverUp } = useServerStatus()
   return (
     <div className="grid gap-2 pt-2">
       <HoverCard openDelay={200}>

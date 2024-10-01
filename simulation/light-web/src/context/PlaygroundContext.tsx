@@ -26,7 +26,8 @@ interface PlaygroundContextType {
     showLegend: boolean,
     setShowTitle: (state: boolean) => void;
     showTitle: boolean,
-    serverUp: boolean | null
+    setShowMinimap: (state: boolean) => void;
+    showMinimap: boolean
 }
 
 export const PlaygroundContext = createContext<PlaygroundContextType | undefined>(undefined);
@@ -37,28 +38,11 @@ export function PlaygroundProvider({ children }: { children: ReactNode }) {
     const [routers, setRouters] = useState<number[]>([1]);
     const [loading, setLoading] = useState(false);
     const [showStartDialog, setShowStartDialog] = useState(false)
-    const [showLegend, setShowLegend] = useLocalStorage("SHOW_LEGEND", false)
-    const [showTitle, setShowTitle] = useLocalStorage("SHOW_TITLE", false)
-    const [serverUp, setServerUp] = useState<boolean | null>(null);  // State to track server status
+    const [showLegend, setShowLegend] = useLocalStorage("SHOW_LEGEND", true)
+    const [showTitle, setShowTitle] = useLocalStorage("SHOW_TITLE", true)
+    const [showMinimap, setShowMinimap] = useLocalStorage("SHOW_MINIMAP", true)
 
     const router = useRouter()
-
-
-
-    useEffect(() => {
-        const checkServerStatus = async () => {
-            try {
-                const { data } = await axios.get("http://127.0.0.1:5002/health");  // Flask health endpoint
-                if (data.status === "ok") {
-                    setServerUp(true);
-                }
-            } catch (error) {
-                setServerUp(false);
-            }
-        };
-        checkServerStatus();
-    }, []);
-
 
     const start = async () => {
         setLoading(true)
@@ -67,7 +51,7 @@ export function PlaygroundProvider({ children }: { children: ReactNode }) {
             description: "Starting simulation ! Should not take long.",
         })
         try {
-            const { data } = await axios.post(`http://127.0.0.1:5002/create_simulation`, {
+            const { data } = await axios.post(`/api/simulations/new`, {
                 nb_receivers: clients[0],
                 nb_routers: routers[0]
             })
@@ -92,7 +76,7 @@ export function PlaygroundProvider({ children }: { children: ReactNode }) {
 
 
     return (
-        <PlaygroundContext.Provider value={{ clients, setClients, routers, setRouters, loading, startSimulation, setShowLegend, showLegend, setShowTitle, showTitle, serverUp }}>
+        <PlaygroundContext.Provider value={{ clients, setClients, routers, setRouters, loading, startSimulation, setShowLegend, showLegend, setShowTitle, showTitle, setShowMinimap, showMinimap }}>
             {children}
             <AlertDialog open={showStartDialog} onOpenChange={setShowStartDialog}>
                 <AlertDialogContent>

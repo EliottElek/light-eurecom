@@ -14,6 +14,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import clsx from "clsx"
 
 interface CodeViewerProps {
   routers: readonly string[]
@@ -21,7 +22,14 @@ interface CodeViewerProps {
 
 interface CodeProps {
   children: React.ReactNode,
-  title?: string
+  title?: string,
+  status?: 'pending' | 'error' | 'complete'
+}
+
+const statuses = {
+  "pending": "border-slate-100/20 text-slate-100",
+  "error": "border-red-200/20 text-red-400",
+  "complete": "border-green-200/20 text-green-400"
 }
 
 export function CodeViewer({ routers }: CodeViewerProps) {
@@ -82,15 +90,15 @@ export function CodeViewer({ routers }: CodeViewerProps) {
 }
 
 
-export const Code = ({ children, title }: CodeProps) => {
+export const Code = ({ children, title, status = "pending" }: CodeProps) => {
   return (
     <div className="rounded-md bg-black border">
-      {title && <div className="border-b border-gray-200/20 text-slate-200 p-1 px-2 font-normal opacity-75 text-sm"><p>{title}</p></div>}
+      {title && <div className={clsx("border-b p-1 px-2 font-normal opacity-75 text-sm", statuses[status])}> <p>{title}</p></div>}
       <pre className='p-4 whitespace-pre-wrap break-words'>
-        <code className="w-full break-all grid gap-1 text-sm text-slate-200/75">
+        <code className={clsx("w-full break-all grid gap-1 text-sm", statuses[status])}>
           {children}
         </code>
       </pre>
-    </div>
+    </div >
   )
 }

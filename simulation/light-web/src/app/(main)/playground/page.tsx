@@ -17,7 +17,7 @@ const PlaygroundDefault = () => {
               Use the left panel to start a new simulation, or follow a local demonstration.
             </p>
             <div className='mt-4'>
-              <Link href="/playground/local"><Button className='text-white'>View a demo</Button></Link>
+              <Link href="/demo"><Button className='text-white'>View a demo</Button></Link>
             </div>
           </div>
         </div>

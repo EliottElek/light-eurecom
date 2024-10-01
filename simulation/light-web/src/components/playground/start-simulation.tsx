@@ -1,12 +1,14 @@
 
 "use client"
 import { usePlayground } from '@/context/PlaygroundContext'
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../ui/button'
 import { ReloadIcon } from '@radix-ui/react-icons'
+import { useServerStatus } from '@/context/ServerStatusContext'
 
 const StartSimulation = () => {
-    const { loading, startSimulation, serverUp } = usePlayground()
+    const { loading, startSimulation } = usePlayground()
+    const { serverUp } = useServerStatus()
 
 
     if (!serverUp) return (

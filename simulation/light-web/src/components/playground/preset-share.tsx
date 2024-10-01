@@ -1,19 +1,26 @@
 "use client"
+import { useState } from "react"
 import { CopyIcon } from "@radix-ui/react-icons"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { usePathname } from 'next/navigation'
-
 
 export function PresetShare() {
   const pathname = usePathname()
+  const [isCopied, setIsCopied] = useState(false)
+
+  const copyToClipboard = async () => {
+    try {
+      const link = `${process.env.NEXT_PUBLIC_HOST}${pathname}`
+      await navigator.clipboard.writeText(link)
+      setIsCopied(true)
+      setTimeout(() => setIsCopied(false), 2000) // Reset copy status after 2 seconds
+    } catch (error) {
+      return
+    }
+  }
 
   return (
     <Popover>
@@ -30,21 +37,25 @@ export function PresetShare() {
         </div>
         <div className="flex items-center space-x-2 pt-4">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
+            <Label htmlFor="link" className="sr-only">Link</Label>
             <Input
               id="link"
-              defaultValue={`http://localhost:3001${pathname}`}
+              defaultValue={`${process.env.NEXT_PUBLIC_HOST}${pathname}`}
               readOnly
               className="h-9"
             />
           </div>
-          <Button type="submit" size="sm" className="px-3">
+          <Button
+            type="button"
+            size="sm"
+            className="px-3"
+            onClick={copyToClipboard}
+          >
             <span className="sr-only">Copy</span>
             <CopyIcon className="h-4 w-4" />
           </Button>
         </div>
+        {isCopied && <p className="text-sm text-green-500 pt-2">Link copied to clipboard!</p>}
       </PopoverContent>
     </Popover>
   )

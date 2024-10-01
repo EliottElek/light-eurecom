@@ -8,6 +8,8 @@ import { Container } from '@/components/landing/Container'
 import { Logo } from '@/components/landing/Logo'
 import { NavLinks } from '@/components/landing/NavLinks'
 import clsx from 'clsx'
+import { useServerStatus } from '@/context/ServerStatusContext'
+import Cta from '../cta'
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -52,6 +54,8 @@ function MobileNavLink(
 
 export function Header() {
   const [scrolledFromTop, setScrolledFromTop] = useState(false);
+  const { serverUp } = useServerStatus()
+
   useEffect(() => {
     function onScroll() {
       let currentPosition = window.pageYOffset;
@@ -137,10 +141,8 @@ export function Header() {
             {/* <Button href="/login" variant="outline" className="hidden lg:block">
               Log in
             </Button> */}
-            <Link href="/playground"><Button className="hidden lg:block">
-              Playground
-            </Button>
-            </Link>
+            <Cta />
+
           </div>
         </Container>
       </nav>

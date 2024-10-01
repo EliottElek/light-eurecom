@@ -10,7 +10,7 @@ import { fetcher } from '@/lib/fetcher';
 import { Logomark } from '@/components/landing/Logo';
 
 const page = ({ params }: { params: { simulation_id: string } }) => {
-    const { data: simulation, isLoading, error, mutate } = useSWR(`http://127.0.0.1:5002/simulations/${params.simulation_id}`, fetcher, { refreshInterval: 1500 })
+    const { data: simulation, isLoading, error, mutate } = useSWR(`/api/simulations/${params.simulation_id}`, fetcher, { refreshInterval: 1500 })
 
     if (error || simulation?.error == "404") return (
         <div className="relative flex h-full items-center py-22 lg:px-8">
@@ -35,28 +35,8 @@ const page = ({ params }: { params: { simulation_id: string } }) => {
         </div>)
     if (simulation?.status === "error") return (
         <>
-            <TabsContent value="schema" className="mt-0 border-0 p-0 h-full">
-                <div className='flex py-10 overflow-y-auto h-full items-center flex-col'>
-                    <p className="font-mono text-2xl leading-7">Error</p>
-                    <h1 className="mt-4 text-lg font-bold">
-                        An error occurred.
-                    </h1>
-                    <div className="p-12 gap-4 w-full">
-                        <div className="max-h-[50vh] overflow-y-auto">
-                            <Code title={"Logs"}>
-                                {simulation?.logs.map((log: string) => <span className='w-full break-words'>{log}</span>)}
-                            </Code>
-                        </div>
-                    </div>
-                    <Link
-                        href="/playground"
-                        className="mt-4 text-sm font-bold leading-6 text-primary hover:underline"
-                    >
-                        Go back home
-                    </Link>
-                </div>
-            </TabsContent>
-            <Logs logs={simulation.logs} />
+            <Logs status={"error"} title={"schema"} logs={simulation.logs} />
+            <Logs status={"error"} title={"logs"} logs={simulation.logs} />
         </>
     )
 
@@ -74,7 +54,7 @@ const page = ({ params }: { params: { simulation_id: string } }) => {
                     </div>
                 </div>
             </TabsContent>
-            <Logs logs={simulation.logs} />
+            <Logs status={simulation.status} logs={simulation.logs} />
         </>
     )
     return (
@@ -82,7 +62,7 @@ const page = ({ params }: { params: { simulation_id: string } }) => {
             <TabsContent value="schema" className="mt-0 border-0 p-0 h-full">
                 <Canva simulation={simulation} />
             </TabsContent>
-            <Logs logs={simulation.logs} />
+            <Logs status={simulation.status} logs={simulation.logs} />
         </>
     )
 }
@@ -90,11 +70,11 @@ const page = ({ params }: { params: { simulation_id: string } }) => {
 export default page
 
 
-const Logs = ({ logs }: { logs: string[] }) => {
+const Logs = ({ logs, title = "logs", status = "pending" }: { logs: string[], title?: string, status?: 'pending' | 'error' | 'complete' }) => {
     return (
-        <TabsContent value="logs" className="mt-0 p-6 border-0 h-full">
-            <Code title={"Logs"}>
-                {logs.map((log: string) => <span className='w-full break-words'>{log}</span>)}
+        <TabsContent value={title} className="mt-0 p-6 border-0 h-full overflow-y-auto">
+            <Code status={status} title={"Logs"}>
+                {logs.map((log: string, i: number) => <span key={i} className='w-full break-words'>{log}</span>)}
             </Code>
         </TabsContent>)
 }

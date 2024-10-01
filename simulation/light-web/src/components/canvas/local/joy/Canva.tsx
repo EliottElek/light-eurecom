@@ -1,13 +1,13 @@
 "use client"
 import React, { useCallback, useEffect, useState } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge, MiniMap, Controls, Connection, Edge, Panel, Background, BackgroundVariant } from 'reactflow';
+import ReactFlow, { useNodesState, useEdgesState, addEdge, MiniMap, Controls, Connection, Edge, Panel, Background, BackgroundVariant, ControlButton } from 'reactflow';
 import CustomNode from './CustomNode';
 import 'reactflow/dist/style.css';
 import CacheIcon from '../../../CacheIcon';
 import ProgressBar from '../../ProgessBar';
-import DbIcon from '@/components/DbIcon';
 import dynamic from 'next/dynamic';
 import { ACTIONS, EVENTS, ORIGIN, STATUS, CallBackProps } from 'react-joyride';
+import { usePlayground } from '@/context/PlaygroundContext';
 
 
 
@@ -25,6 +25,7 @@ const Canva = ({ data }: { data: any }) => {
   const [stepIndex, setStepIndex] = useState(0);
   const [nodes, setNodes, onNodesChange] = useNodesState(data.schema_steps[stepIndex].nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(data.schema_steps[stepIndex].edges);
+  const { showTitle, showLegend, showMinimap } = usePlayground()
 
 
   const onConnect = useCallback((params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)), []);
@@ -57,33 +58,44 @@ const Canva = ({ data }: { data: any }) => {
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         fitView
-        maxZoom={0.7}
-        minZoom={0.7}
+        maxZoom={1.7}
+        minZoom={.1}
         proOptions={proOptions}
         className="bg-background"
       >
         <Background variant={"dots" as BackgroundVariant} />
-        <Panel position="bottom-right">
-          <div className='p-4 max-w-xl flex flex-col gap-2 shadow rounded-md bg-background'>
-            <h2 className='mb-3 italic underline text-sm'>
-              Legends:
-            </h2>
-            <div className='flex items-center justify-between text-sm gap-1'>
-              <CacheIcon size="20px" />
-              <p>Local cache</p>
+        <Controls className='p-1 !bg-background'>
+        </Controls>
+        <Panel position="top-left">
+          {showTitle &&
+            <div className='prose relative text-foreground relative p-2 bg-background shadow rounded-md'>
+              <h2 className='!mt-2 text-foreground !mb-4 text'>
+                {data.name}
+              </h2>
+              <p> {data.description}</p>
             </div>
-            <div className='flex items-center justify-between text-sm gap-1'>
-              <DbIcon size="20px" />
-              <p>Database</p>
-            </div>
-            <div className='flex items-center max-w-32 overflow-hidden justify-between text-sm gap-1'>
-              <ProgressBar progress={70} />
-              <p>Data volume</p>
-            </div>
-          </div>
+          }
         </Panel>
+        {showMinimap && <MiniMap maskColor='hsl(var(--primary-foreground))' className='!bg-background' pannable zoomable position='top-right' nodeStrokeWidth={3} />
+        }
+        {showLegend &&
+          <Panel position="bottom-right">
+            <div className='p-4 max-w-xl flex flex-col gap-2 bg-background shadow rounded-md'>
+              <h2 className='mb-3 italic underline text-sm'>
+                Legends:
+              </h2>
+              <div className='flex items-center justify-between text-sm gap-1'>
+                <CacheIcon size="20px" />
+                <p>Local cache</p>
+              </div>
+              <div className='flex items-center justify-between text-sm gap-1'>
+                <ProgressBar progress={70} />
+                <p>Overload</p>
+              </div>
+            </div>
+          </Panel>}
       </ReactFlow>
-    </div>
+    </div >
   );
 };
 

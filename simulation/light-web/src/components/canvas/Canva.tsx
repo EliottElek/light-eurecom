@@ -1,6 +1,6 @@
 "use client"
 import React, { useCallback, useEffect } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge, Controls, Connection, Edge, Panel, Background, BackgroundVariant } from 'reactflow';
+import ReactFlow, { useNodesState, useEdgesState, addEdge, Controls, Connection, Edge, Panel, Background, BackgroundVariant, MiniMap } from 'reactflow';
 import CustomNode from './CustomNode';
 import 'reactflow/dist/style.css';
 import CacheIcon from '../CacheIcon';
@@ -18,7 +18,7 @@ const Canva = ({ data, steps }: { data: any, steps: any }) => {
 
   const [nodes, setNodes, onNodesChange] = useNodesState(data.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(data.edges);
-  const { showLegend, showTitle } = usePlayground()
+  const { showLegend, showTitle, showMinimap } = usePlayground()
 
 
   const onConnect = useCallback((params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)), []);
@@ -27,8 +27,6 @@ const Canva = ({ data, steps }: { data: any, steps: any }) => {
     setNodes(data.nodes);
     setEdges(data.edges);
   }, [data.nodes, data.edges]);
-
-  console.log(steps)
 
   return (
     <div className='relative' style={{ width: '100%', height: '100%' }}>
@@ -58,6 +56,8 @@ const Canva = ({ data, steps }: { data: any, steps: any }) => {
       >
         <Background variant={"dots" as BackgroundVariant} />
         <Controls className='bg-background' />
+        <Controls className='p-1 !bg-background'>
+        </Controls>
         <Panel position="top-left">
           {showTitle &&
             <div className='prose relative text-foreground relative p-2 bg-background shadow rounded-md'>
@@ -68,6 +68,8 @@ const Canva = ({ data, steps }: { data: any, steps: any }) => {
             </div>
           }
         </Panel>
+        {showMinimap && <MiniMap maskColor='hsl(var(--primary-foreground))' className='!bg-background' pannable zoomable position='top-right' nodeStrokeWidth={3} />
+        }
         {showLegend &&
           <Panel position="bottom-right">
             <div className='p-4 max-w-xl flex flex-col gap-2 bg-background shadow rounded-md'>

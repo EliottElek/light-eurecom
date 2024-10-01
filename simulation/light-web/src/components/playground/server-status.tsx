@@ -1,8 +1,8 @@
-import { usePlayground } from '@/context/PlaygroundContext'
+import { useServerStatus } from '@/context/ServerStatusContext'
 import React from 'react'
 
 const ServerStatus = () => {
-    const { serverUp } = usePlayground()
+    const { serverUp } = useServerStatus()
 
     return (
         <div className="flex items-center">

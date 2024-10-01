@@ -14,7 +14,7 @@ import { CodeViewer } from "@/components/playground/code-viewer"
 import { RoutersSelector } from "@/components/playground/routers-selector"
 import { ModelSelector } from "@/components/playground/model-selector"
 import { PresetActions } from "@/components/playground/preset-actions"
-import { PresetSave } from "@/components/playground/preset-save"
+// import { PresetSave } from "@/components/playground/preset-save"
 import { SimulationSelector } from "@/components/playground/simulation-selector"
 import { PresetShare } from "@/components/playground/preset-share"
 import { ClientsSelector } from "@/components/playground/clients-selector"
@@ -22,7 +22,7 @@ import { models, types } from "@/components/playground/data/models"
 import { ModeToggle } from "@/components/ThemeSwitcher";
 import { Logomark } from '@/components/landing/Logo';
 import Link from 'next/link';
-import { PlaygroundProvider, usePlayground } from '@/context/PlaygroundContext'
+import { PlaygroundProvider } from '@/context/PlaygroundContext'
 import StartSimulation from '@/components/playground/start-simulation'
 import ServerStatus from '@/components/playground/server-status'
 import { useParams } from 'next/navigation';
@@ -42,7 +42,7 @@ export default function PlaygroundLayout({
     const params = useParams();
     const simulationId = params.simulation_id as string;
 
-    const { data: simulation, isLoading } = useSWR(simulationId && `http://127.0.0.1:5002/simulations/${simulationId}`, fetcher)
+    const { data: simulation, isLoading } = useSWR(simulationId && `${process.env.NEXT_PUBLIC_API_ENDPOINT}/simulations/${simulationId}`, fetcher)
 
     if (isLoading) return <div className="fixed inset-0 flex items-center animate-pulse justify-center"><div className="flex gap-2 items-center"><Logomark /><span>Loading...</span></div></div>
 
@@ -59,7 +59,7 @@ export default function PlaygroundLayout({
                     </Link>
                     <div className="ml-auto md:flex hidden w-full space-x-2 sm:justify-end">
                         <SimulationSelector simulationId={simulationId} />
-                        {simulationId && <PresetSave />}
+                        {/* {simulationId && <PresetSave />} */}
                         {simulationId &&
                             <div className="hidden space-x-2 md:flex">
                                 <CodeViewer routers={simulation?.routers} />
@@ -74,7 +74,7 @@ export default function PlaygroundLayout({
                         <div className="grid items-stretch sticky top-0 h-full">
                             <ResizablePanelGroup
                                 direction="horizontal"
-                                className="rounded-lg border md:min-w-[250px]"
+                                className="rounded-lg border"
                             >
                                 <ResizablePanel defaultSize={75}>
                                     <div className="md:order-1 h-full w-full overflow-hidden">
@@ -82,7 +82,7 @@ export default function PlaygroundLayout({
                                     </div>
                                 </ResizablePanel>
                                 <ResizableHandle />
-                                <ResizablePanel defaultSize={20} minSize={20}>
+                                <ResizablePanel defaultSize={20} minSize={20} maxSize={40} className="min-w-[300px]">
                                     <div className="flex-col border-l h-full space-y-4 md:flex md:order-2 p-3">
                                         <div className="grid gap-2 p-3">
                                             <HoverCard openDelay={200}>
